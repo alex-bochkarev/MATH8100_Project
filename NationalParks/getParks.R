@@ -23,7 +23,7 @@ length(df$Name)
 ## let's extract proper coordinates
 
 ## Clean names
-df$Name <- trimws(str_match(df$Name,"([A-Za-z ].+).+")[,2])
+## df$Name <- str_trim(str_match(df$Name,"([A-Za-z ].+).+")[,2]) # will adjust later
 
 coords = str_match(df$Location,"/ ([^/]+) [(]")[,2]
 coords = str_match(coords,"^(.+); (.+)[^0-9]+$")
@@ -38,7 +38,7 @@ df$Loc = str_match(df$Location,"^([A-Za-z ]+).+")[,2]
 drop_loc = c("Alaska", "Hawaii", "American Samoa")
 drop_parks = c("Virgin Islands", "Dry Tortugas", "Biscayne", "Isle Royale") # Mostly based on islands
 
-df = filter(df, !(Loc %in% drop_parks) & !(Name %in% drop_parks))
+df = filter(df, !((Loc %in% drop_loc) | (Name %in% drop_parks)))
 length(df$Name)
 
 write.csv(select(df,Name,Loc,Lon,Lat, Description),file="data/parks.csv")
