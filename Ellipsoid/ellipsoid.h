@@ -1,13 +1,19 @@
 /*
   ellipsoid.h
   The main file describing the Ellipsoid method algorithm
-
+  For the MATH8100 course project at Clemson University
+  Author: A. Bochkarev
+  Date: Nov-Dec 2018
 */
+
 #include <armadillo>
 #include <stdexcept>
 
 using namespace std;
 using namespace arma;
+
+// module-specific constants
+#define M 100; // big-enough ball radius for the initial ellipsoid
 
 struct Ellipse{
   mat H; // shape
@@ -25,7 +31,8 @@ protected:
 
  public:
   LPSolver(){ c = NULL; A = NULL; b = NULL; n = 0; m=0;}
-  ~LPSolver();
+  ~LPSolver(){
+  };
   void setModel(colvec &costs, mat &coeffs, colvec &rhs){
     c = &costs;
     A = &coeffs;
@@ -33,7 +40,7 @@ protected:
     n = size(*A)[1];
     m = size(*A)[0];
   };
-  virtual colvec solve();
+  virtual colvec solve() = 0; // pure virtual -- has to be defined for specific solvers, obviously
   inline uvec checkFeasibility(colvec &x){
     return( (*A) * x > (*b)); // no constraints are violated
   };
@@ -54,18 +61,26 @@ class EllipsoidSolver: public LPSolver{
   };
   colvec solve();
   // algorithm-specific
-  Ellipse getFirstEllipse(); // TODO
-  inline Ellipse updateEllipse(colvec wt){
-    Ellipse E;
-    E.o = E.o - (1/(n+1))*E.H*wt / (sqrt(trans(wt)*E.H*wt)); // update the center
-    E.H = ((n^2)/((n^2)-1))*(E.H - (2/(n+1))*(E.H*wt*trans(wt)*E.H)/(trans(wt)*E.H*wt)); // update the shape
-    return E;
+  Ellipse getFirstEllipse();
+  inline Ellipse updateEllipse(colvec &wt, Ellipse &E){
+    Ellipse newE;
+    newE.o = E.o - (1.0/(n+1))*E.H*wt / (sqrt(dot(wt,E.H*wt))); // update the center
+    newE.H = (pow(n,2)/(pow(n,2)-1))*(E.H - (2.0/(n+1.0))*(E.H*wt*trans(wt)*E.H)/dot(wt,E.H*wt)); // update the shape
+    return newE;
   };
   inline bool stopCriterion(colvec &w, Ellipse &E){
     return(sqrt(dot(w,E.H*w) <= eps)); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
 
+Ellipse EllipsoidSolver::getFirstEllipse(){
+  // to start the ball rolling, I'll implement just a big enough unit ball
+  Ellipse E0;
+  E0.o = colvec(n, fill::zeros);
+  E0.H = mat(n,n,fill::eye);
+  E0.H = E0.H * M;
+  return E0;
+}
 colvec EllipsoidSolver::solve()
 {
   if (A==NULL || b==NULL || c==NULL || n==0) throw std::invalid_argument("Model parameters A,b,c are not fully specified (consider calling setModel(...)) first)");
@@ -73,29 +88,32 @@ colvec EllipsoidSolver::solve()
   Ellipse E = getFirstEllipse();
   colvec wt;
 
+  bool timeToStop = false;
+
   do{
-    uvec S = checkFeasibility(E.o);
+   uvec S = checkFeasibility(E.o);
     if(accu(S) == 0){ // no constraints are violated
       // the center is in the feasible set
       wt = *c; // as c is basically the gradient vector for the linear objective
+      if (valueAt(E.o)<=bestObjective){
+        // we have found a better solution
+        bestObjective = valueAt(E.o);
+        bestPoint = E.o;
+      }
+      if(stopCriterion(wt,E)) timeToStop = true;
     }else{
       // the new center is not in the feasible set
       // find the constraint that was violated
       for (int i=0;i<m; i++){
         if(S[i] != 0 ){
           // we have found a violated constraint;
-          wt = A->row(i);
+          wt = trans(A->row(i));
           break;
         }
       }
     }
     
-    E = updateEllipse(wt);
-    if (valueAt(E.o)<=bestObjective){
-      // we have found a better solution
-      bestObjective = valueAt(E.o);
-      bestPoint = E.o;
-    }
-  }while(!stopCriterion(wt, E));
+    E = updateEllipse(wt,E);
+      }while(!timeToStop);
   return bestPoint;
 }

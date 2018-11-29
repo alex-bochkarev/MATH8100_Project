@@ -1,0 +1,20 @@
+A matrix is :
+        0   1.0000
+        0  -1.0000
+  -1.0000   1.0000
+   1.0000   1.0000
+
+rhs is: 
+   2.0000
+  -1.0000
+        0
+   6.0000
+
+Costs vector is:
+  -1.0000
+   0.5000
+
+Epsilon is 0.01
+Optimal point found is:
+   4.9933
+   1.0061
