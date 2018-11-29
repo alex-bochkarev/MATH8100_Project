@@ -117,6 +117,7 @@ int main(int argc, char **argv)
 
     cout << "Objective at the point found: " << solver.valueAt(opt) << endl;
     cout << "Objective at the known opt point: " << solver.valueAt(xStar) << endl;
+    cout << "SOLUTION CHECK: ";
     if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=eps){
       cout << "OK" << endl;
     }else cout << "FAILED" << endl; 
