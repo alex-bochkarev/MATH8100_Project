@@ -110,10 +110,14 @@ int main(int argc, char **argv)
   colvec opt = solver.solve();
 
   cout << "Optimal point found is:\n" << opt;
-  if(answerKnown){
-    cout << "Known solution check:";
+  cout << "Optimal objective: " << solver.valueAt(opt) << endl;
 
-    if(norm(xStar - opt,"inf")<=eps){
+  if(answerKnown){
+    cout << endl << "Known solution check:" << endl;
+
+    cout << "Objective at the point found: " << solver.valueAt(opt) << endl;
+    cout << "Objective at the known opt point: " << solver.valueAt(xStar) << endl;
+    if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=eps){
       cout << "OK" << endl;
     }else cout << "FAILED" << endl; 
   }

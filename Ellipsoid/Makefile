@@ -1,15 +1,15 @@
 flags = -g -O1 -larmadillo -lblas
 src = ./ell-test.cpp
 ofile= ./testell
-logfile=./t.log
-runargs=case0.data
+logfile=./caseMult.log
+runargs=caseMult.data
 
-.PHONY: all, compile, test
+.PHONY: all, compile, tests
 
-all: compile test
+all: compile tests
 
 compile: ${src}
 	g++ ${src} ${flags} -o ${ofile}
 
-test:
+tests:
 	${ofile} ${runargs} > ${logfile}
