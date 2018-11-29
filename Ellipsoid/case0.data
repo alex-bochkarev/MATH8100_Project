@@ -1,0 +1,20 @@
+# data file for a simple case
+# (two-dimensional problem)
+>epsilon (precision)
+0.01
+>A matrix data
+0,1
+0,-1
+-1,1
+1,1
+>b (rhs) data
+2
+-1
+0
+6
+>c (costs vector) data
+-1
+0.5
+>x -- known optimal solution
+5
+1

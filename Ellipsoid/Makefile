@@ -2,7 +2,7 @@ flags = -g -O1 -larmadillo -lblas
 src = ./ell-test.cpp
 ofile= ./testell
 logfile=./t.log
-runargs=A.data b.data c.data 0.01
+runargs=case0.data
 
 .PHONY: all, compile, test
 

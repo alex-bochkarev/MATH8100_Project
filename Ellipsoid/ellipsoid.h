@@ -13,7 +13,7 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define M 100; // big-enough ball radius for the initial ellipsoid
+#define Rbig 100; // big-enough ball radius for the initial ellipsoid
 
 struct Ellipse{
   mat H; // shape
@@ -78,7 +78,7 @@ Ellipse EllipsoidSolver::getFirstEllipse(){
   Ellipse E0;
   E0.o = colvec(n, fill::zeros);
   E0.H = mat(n,n,fill::eye);
-  E0.H = E0.H * M;
+  E0.H = E0.H * Rbig;
   return E0;
 }
 colvec EllipsoidSolver::solve()

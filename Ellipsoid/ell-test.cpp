@@ -5,45 +5,104 @@
 
 #include "ellipsoid.h"
 #include <iostream>
+#include <fstream>
+#include <vector>
+
+void showUsage(char *progname)
+{
+  cout << "USAGE:" << endl;
+  cout << progname << " <filename>" << endl;
+  cout << "Where *.data files are corresponding problem coefficients and <epsilon> is the required precision (number)" << endl;
+}
 
 int main(int argc, char **argv)
 {
-  if (argc<5){
-    cout << argc << ": wrong number of arguments. Expected 5." << endl;
-    cout << "USAGE:" << endl;
-    cout << argv[0] << " <A.data> <b.data> <c.data> <epsilon>" << endl;
-    cout << "Where *.data files are corresponding problem coefficients and <epsilon> is the required precision (number)" << endl;
+  if (argc<1){
+    cout << argc << ": wrong number of arguments. Expected exactly 1 (filename)." << endl;
+    showUsage(argv[0]);
     return 1;
-      };
+  };
 
-  double eps = atof(argv[4]);
+
+  ifstream file;
+  file.open(argv[1]);
+
+  std::string line;
+
+  char mode='0';
+  std::vector<double> row;
+  double eps = -1.0;
   mat A; colvec b; colvec c;
-  if(!A.load(argv[1])){
-    cerr << "Error reading matrix from the file:" << argv[1] << endl;
+  colvec xStar; bool answerKnown=false;
+
+  stringstream ssA, ssb, ssc, ssX;
+
+  while(getline(file, line)){
+    if(line[0]=='#') continue; // commented out line found
+    if(line[0]=='>'){mode=line[1];continue;};
+
+    switch(mode){
+      case 'A':
+        ssA << line;
+        ssA << endl;
+        break;
+      case 'b':
+        ssb << line  << endl;
+        break;
+      case 'c':
+        ssc << line  << endl;
+        break;
+      case 'e':
+        eps = stod(line);
+        mode='0';
+        break;
+      case 'x':
+        ssX << line << endl;
+        answerKnown=true;
+        break;
+    case '0':
+      break;
+    default:
+      cerr << "Unknown mode specifier (first symbol in the line): " << mode << endl;
+      return 1;
+    };
+  };
+
+  if(!A.load(ssA)){
+    cerr << "Error parsing the A matrix" << endl;
     return 1;
   };
-  if(!b.load(argv[2])){
-    cerr << "Error loading rhs from the file:" << argv[2] << endl;
+  if(!b.load(ssb)){
+    cerr << "Error parsing the rhs" << endl;
     return 1;
   };
 
-  if(!c.load(argv[3])){
-    cerr << "Error loading costs vector from the file:" << endl;
+  if(!c.load(ssc)){
+    cerr << "Error parsing costs vector" << endl;
     return 1;
   };
 
-  if (size(A)[0]!=size(b)[0] || size(A)[1] != size(c)[0]){
+  if(answerKnown)
+    if (!xStar.load(ssX)){
+      cerr << "Error parsing known solution vector" << endl;
+      return 1;
+    }
+
+  if (size(A)[0]!=size(b)[0] || size(A)[1] != size(c)[0] || (answerKnown && size(A)[1]!=size(xStar)[0])){
     cerr << "Data dimensions do not match! What we've got is" << endl;
     cerr << "A:" << size(A) << endl;
     cerr << "b:" << size(b) << endl;
     cerr << "c:" << size(c) << endl;
+    cerr << "x:" << size(xStar) << endl;
     return 1;
-  }
+  };
+
   cout << "A matrix is :\n" << A << endl;
   cout << "rhs is: \n" << b << endl;
   cout << "Costs vector is:\n" << c << endl;
 
   cout << "Epsilon is " << eps << endl;
+  if(answerKnown) cout << "Known optimal solution:\n" << xStar << endl;
 
   EllipsoidSolver solver(eps);
   solver.setModel(c,A,b);
@@ -51,5 +110,12 @@ int main(int argc, char **argv)
   colvec opt = solver.solve();
 
   cout << "Optimal point found is:\n" << opt;
+  if(answerKnown){
+    cout << "Known solution check:";
+
+    if(norm(xStar - opt,"inf")<=eps){
+      cout << "OK" << endl;
+    }else cout << "FAILED" << endl; 
+  }
   return 0;
 }

@@ -15,6 +15,11 @@ Costs vector is:
    0.5000
 
 Epsilon is 0.01
+Known optimal solution:
+   5.0000
+   1.0000
+
 Optimal point found is:
    4.9933
    1.0061
+Known solution check:OK
