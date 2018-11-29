@@ -21,6 +21,9 @@ Problem folder is [NationalParks](./NationalParks/).
 - TODO: problem coding -- MS
 
 ### Ellipsoid method
+- first working prototype uploaded: [Ellipsoid](./Ellipsoid/) 
+- functionality, in a nutshell: minimize c^T x s.t. Ax <= b, for bounded feasible region. Finds approximate solution (with a given precision eps)
+- no description / analysis yet
 - TODO: Method presentation -- AB
 
 ### SVM
