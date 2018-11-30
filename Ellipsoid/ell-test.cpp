@@ -106,7 +106,7 @@ int main(int argc, char **argv)
 
   EllipsoidSolver solver(eps);
   solver.setModel(c,A,b);
-
+  if(answerKnown) solver.setFstar(solver.valueAt(xStar));
   colvec opt = solver.solve();
 
   cout << "Optimal point found is:\n" << opt;

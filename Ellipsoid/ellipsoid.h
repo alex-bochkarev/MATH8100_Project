@@ -13,7 +13,7 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 100 // big-enough ball radius for the initial ellipsoid
+#define Rbig 10 // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 10
 
 struct Ellipse{
@@ -29,9 +29,10 @@ protected:
   colvec *b; // right-hand side
   mat *A;// feasible set (a polytope)
   int n,m;
-
+  double fStar;
+  bool fKnown;
  public:
-  LPSolver(){ c = NULL; A = NULL; b = NULL; n = 0; m=0;}
+  LPSolver(){ c = NULL; A = NULL; b = NULL; n = 0; m=0; fStar = std::numeric_limits<double>::infinity(); fKnown = false;}
   ~LPSolver(){
   };
   void setModel(colvec &costs, mat &coeffs, colvec &rhs){
@@ -40,6 +41,10 @@ protected:
     b = &rhs;
     n = size(*A)[1];
     m = size(*A)[0];
+  };
+  void setFstar(double f){
+    fStar = f;
+    fKnown = true;
   };
   virtual colvec solve() = 0; // pure virtual -- has to be defined for specific solvers, obviously
   inline uvec checkFeasibility(colvec &x){
@@ -65,11 +70,15 @@ class EllipsoidSolver: public LPSolver{
   Ellipse getFirstEllipse();
   inline Ellipse updateEllipse(colvec &wt, Ellipse &E){
     Ellipse newE;
-    newE.o = E.o - (1.0/(n+1))*E.H*wt / (sqrt(dot(wt,E.H*wt))); // update the center
+    newE.o = E.o - (1.0/(n+1))*E.H*wt / sqrt(dot(wt,E.H*wt)); // update the center
     newE.H = (pow(n,2)/(pow(n,2)-1))*(E.H - (2.0/(n+1.0))*(E.H*wt*trans(wt)*E.H)/dot(wt,E.H*wt)); // update the shape
     return newE;
   };
   inline bool stopCriterion(colvec &w, Ellipse &E){
+    if(fKnown){
+      cout << "optimality gap: " << bestObjective - fStar << endl;
+    }
+    cout << "Criterion value: " << sqrt(dot(w,E.H*w)) << endl;
     return(sqrt(dot(w,E.H*w) < eps)); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
@@ -79,7 +88,7 @@ Ellipse EllipsoidSolver::getFirstEllipse(){
   Ellipse E0;
   E0.o = colvec(n, fill::zeros);
   E0.H = mat(n,n,fill::eye);
-  E0.H = E0.H * Rbig;
+  E0.H = E0.H * pow(Rbig,2);
   return E0;
 }
 
@@ -91,10 +100,14 @@ colvec EllipsoidSolver::solve()
   colvec wt;
 
   bool timeToStop = false;
+  uvec S;
 
+  int step=0;
   do{
-   uvec S = checkFeasibility(E.o);
-    if(accu(S) == 0){ // no constraints are violated
+   S = checkFeasibility(E.o);
+   cout << "Step " << step << "====================================================" << endl;
+   cout << "No.of violated constraints: " << accu(S) << endl;
+   if(accu(S) == 0){ // no constraints are violated
       // the center is in the feasible set
       wt = *c; // as c is basically the gradient vector for the linear objective
       if (valueAt(E.o)<=bestObjective){
@@ -115,6 +128,7 @@ colvec EllipsoidSolver::solve()
       }
     }
     E = updateEllipse(wt,E);
+    step++;
   }while(!timeToStop);
   return bestPoint;
 }
