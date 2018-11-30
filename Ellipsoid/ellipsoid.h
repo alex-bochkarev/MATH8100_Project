@@ -13,7 +13,8 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 100; // big-enough ball radius for the initial ellipsoid
+#define Rbig 100 // big-enough ball radius for the initial ellipsoid
+#define ERR_FACTOR 10
 
 struct Ellipse{
   mat H; // shape
@@ -69,7 +70,7 @@ class EllipsoidSolver: public LPSolver{
     return newE;
   };
   inline bool stopCriterion(colvec &w, Ellipse &E){
-    return(sqrt(dot(w,E.H*w) <= eps)); // see Dr. Boyd's notes (TODO: citation in the report)
+    return(sqrt(dot(w,E.H*w) < eps)); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
 
@@ -81,6 +82,7 @@ Ellipse EllipsoidSolver::getFirstEllipse(){
   E0.H = E0.H * Rbig;
   return E0;
 }
+
 colvec EllipsoidSolver::solve()
 {
   if (A==NULL || b==NULL || c==NULL || n==0) throw std::invalid_argument("Model parameters A,b,c are not fully specified (consider calling setModel(...)) first)");
@@ -112,8 +114,7 @@ colvec EllipsoidSolver::solve()
         }
       }
     }
-    
     E = updateEllipse(wt,E);
-      }while(!timeToStop);
+  }while(!timeToStop);
   return bestPoint;
 }

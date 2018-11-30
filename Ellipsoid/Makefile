@@ -8,6 +8,6 @@ all: compile tests
 compile: ${src}
 	g++ ${src} ${flags} -o ${ofile}
 
-tests: compile
+tests:
 	./run_tests.sh ${ofile}
 .ONESHELL:
