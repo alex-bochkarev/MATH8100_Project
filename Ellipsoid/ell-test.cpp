@@ -53,7 +53,7 @@ int main(int argc, char **argv)
         ssc << line  << endl;
         break;
       case 'e':
-        eps = stod(line)/ERR_FACTOR; // notice that I will take +1 order in precision to be sure with rounding errors
+        eps = stod(line); // notice that I will take +1 order in precision to be sure with rounding errors
         mode='0';
         break;
       case 'x':
@@ -119,7 +119,7 @@ int main(int argc, char **argv)
       cout << "Objective at the known opt point: " << solver.valueAt(xStar) << endl;
       cout << "Optimality gap: " << solver.valueAt(xStar) - solver.valueAt(opt) << endl;
       cout << "SOLUTION CHECK: ";
-    if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=(eps*ERR_FACTOR)){
+    if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=eps){
       cout << "OK" << endl;
     }else cout << "FAILED" << endl;
     }

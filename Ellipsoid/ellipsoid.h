@@ -17,7 +17,7 @@ using namespace arma;
 
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
-#define ERR_FACTOR 10
+#define ERR_FACTOR 100
 #define FEASIB_EPS 0.0001       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
 
@@ -114,7 +114,7 @@ class EllipsoidSolver: public LPSolver{
 
     newE.o = E.o - (1.0/(n+1.0))*E.B*eta / sqrt(dot(eta,eta));
     newE.B = (1 + 1.0/(16.0*n*n))*n/sqrt(n*n-1)*(E.B + (sqrt((n-1.0)/(n+1.0))-1)*E.B*etaHat / dot(eta,eta));
-    newE.H = newE.B * newE.B;
+    newE.H = trans(newE.B) * newE.B;
     return newE;
   };
 
@@ -123,8 +123,9 @@ class EllipsoidSolver: public LPSolver{
     if(fKnown){
       cout << "optimality gap: " << bestObjective - fStar << endl;
     }
+    cout << "w=" << endl << w << endl << "H=" << endl << E.H << endl;
     cout << "Criterion value: " << sqrt(dot(w,E.H*w)) << endl;
-    return(sqrt(dot(w,E.H*w) < eps)); // see Dr. Boyd's notes (TODO: citation in the report)
+    return(sqrt(dot(w,E.H*w) < eps/ERR_FACTOR)); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
 
@@ -212,7 +213,7 @@ colvec EllipsoidSolver::solve()
         }
       }
     }
-    E = updateEllipse(wt,E);
+    E = updateEllipseKhachiyan(wt,E);
     step++;
   }while(!timeToStop);
   status = IS_OPTIMAL;
