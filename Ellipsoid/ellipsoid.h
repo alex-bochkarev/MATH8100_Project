@@ -9,18 +9,37 @@
 #include <armadillo>
 #include <stdexcept>
 
+#define _USE_MATH_DEFINES       // use constants from cmath
+#include <cmath>
+
 using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 10 // big-enough ball radius for the initial ellipsoid
+#define Rbig 1000            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 10
+#define FEASIB_EPS 0.1       // practical "error margin" for unboundedness test
+#define UNBOUND_EPS 0.0001
 
+// problem status flags
+#define IS_UNSOLVED    0
+#define IS_OPTIMAL     1
+#define IS_UNBOUNDED   2
+#define IS_INFEASIBLE -1
+
+/* *******************************************************************
+  Basic structure for an ellipsoid representation
+*/
 struct Ellipse{
   mat H; // shape
   colvec o; // center point
+  double vol;
 };
 
+/* *******************************************************************
+   Base class for LPSolver
+   (common methods & interfaces to be implemented by solvers)
+*/
 class LPSolver{
 protected:
   // model parameters
@@ -31,8 +50,9 @@ protected:
   int n,m;
   double fStar;
   bool fKnown;
+  int status;
  public:
-  LPSolver(){ c = NULL; A = NULL; b = NULL; n = 0; m=0; fStar = std::numeric_limits<double>::infinity(); fKnown = false;}
+  LPSolver(){ c = NULL; A = NULL; b = NULL; n = 0; m=0; fStar = std::numeric_limits<double>::infinity(); fKnown = false; status = IS_UNSOLVED;}
   ~LPSolver(){
   };
   void setModel(colvec &costs, mat &coeffs, colvec &rhs){
@@ -42,11 +62,8 @@ protected:
     n = size(*A)[1];
     m = size(*A)[0];
   };
-  void setFstar(double f){
-    fStar = f;
-    fKnown = true;
-  };
-  virtual colvec solve() = 0; // pure virtual -- has to be defined for specific solvers, obviously
+  void setFstar(double f){ fStar = f; fKnown = true; }; // set the known solution (if known) -- for the check after solution
+  virtual colvec solve() = 0; // has to be defined for specific solvers, obviously
   inline uvec checkFeasibility(colvec &x){
     return( (*A) * x > (*b)); // no constraints are violated
   };
@@ -54,8 +71,12 @@ protected:
   double valueAt(colvec &x){
     return dot(*c,x);
   }
+  int getStatus(){ return status; };
 };
 
+/* *******************************************************************
+   Core class for the ellipsoid method implementation
+*/
 class EllipsoidSolver: public LPSolver{
   double bestObjective;
   colvec bestPoint;
@@ -66,14 +87,18 @@ class EllipsoidSolver: public LPSolver{
     eps = precision;
   };
   colvec solve();
+  bool isUnbounded(colvec &d); // checks if the problem is unbounded
   // algorithm-specific
   Ellipse getFirstEllipse();
   inline Ellipse updateEllipse(colvec &wt, Ellipse &E){
     Ellipse newE;
     newE.o = E.o - (1.0/(n+1))*E.H*wt / sqrt(dot(wt,E.H*wt)); // update the center
     newE.H = (pow(n,2)/(pow(n,2)-1))*(E.H - (2.0/(n+1.0))*(E.H*wt*trans(wt)*E.H)/dot(wt,E.H*wt)); // update the shape
+
+    newE.vol = E.vol* (n/(n-1.0))*pow((pow(n,2)/(pow(n,2)-1)),(n-1.0)/2.0); // formula (2.11) of Bland et al. 1981
     return newE;
   };
+
   inline bool stopCriterion(colvec &w, Ellipse &E){
     if(fKnown){
       cout << "optimality gap: " << bestObjective - fStar << endl;
@@ -83,21 +108,59 @@ class EllipsoidSolver: public LPSolver{
   };
 };
 
-Ellipse EllipsoidSolver::getFirstEllipse(){
-  // to start the ball rolling, I'll implement just a big enough unit ball
+Ellipse EllipsoidSolver::getFirstEllipse(){ // initialization of E0 (the first ellipsoid)
   Ellipse E0;
   E0.o = colvec(n, fill::zeros);
   E0.H = mat(n,n,fill::eye);
   E0.H = E0.H * pow(Rbig,2);
+  E0.vol = pow(M_PI, n/2.0) * pow(Rbig,n) / tgamma(n/2.0 + 1); // volume of the n-ball
   return E0;
 }
 
+bool EllipsoidSolver::isUnbounded(colvec &d)
+{
+  Ellipse E = getFirstEllipse();
+  colvec wt; // a vector for the ellipsoid update
+  colvec v;  // infeasibility
+  do{
+    cout << "Center is: " << endl << E.o << endl;
+    cout << "c' d = " << dot(*c, E.o) << endl;
+    if (dot(*c,E.o) +1 > UNBOUND_EPS){
+      // objective improvement violated
+      wt = *c;
+    }else{
+      v = (*A)*E.o;
+      cout << "v is " << endl << v << endl;
+      // objective improvement satisfied -- let's check for feasibility
+      if(max(v) < UNBOUND_EPS){
+        // we have found an "unboundedness direction"
+        d = E.o;
+        return true; // the problem is unbounded
+      }else{
+        for(int i=0;i<m;i++) // find the first constraint that is violated
+          if(v[i]>UNBOUND_EPS){ wt = trans(A->row(i)); break;};
+        // if we are here -- something does not work properly
+      };
+    };
+    E = updateEllipse(wt,E);
+  }while( E.vol > FEASIB_EPS ); // within the logic of Bland et al 1981
+  cout << "The problem is found to be bounded" << endl;
+  return false;
+};
+
+//////////////////////////////////////////////////////////////////////////////
+// the core function for the solver
 colvec EllipsoidSolver::solve()
 {
   if (A==NULL || b==NULL || c==NULL || n==0) throw std::invalid_argument("Model parameters A,b,c are not fully specified (consider calling setModel(...)) first)");
-  
+  // first, check unboundedness
   Ellipse E = getFirstEllipse();
-  colvec wt;
+  colvec wt = colvec(n,fill::zeros);
+
+  if (isUnbounded(wt)){
+    status = IS_UNBOUNDED;
+    return wt;
+  }
 
   bool timeToStop = false;
   uvec S;
@@ -130,5 +193,6 @@ colvec EllipsoidSolver::solve()
     E = updateEllipse(wt,E);
     step++;
   }while(!timeToStop);
+  status = IS_OPTIMAL;
   return bestPoint;
 }

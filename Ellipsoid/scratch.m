@@ -1,3 +1,24 @@
+%% init A for 2d case
+A = [0  1;
+     0 -1;
+     -1 1;
+     1  1];
+ 
+b = [2 -1 0 6]';
+ 
+c = [-1 0.5]';
+
+
+cvx_begin
+    variable x(2);
+    minimize (c' * x)
+    A*x <= b
+cvx_end
+
+x
+
+%%
+
 %% generate some random matrices
 
 A=round(rand(20,20)-1/2,3)
