@@ -18,7 +18,7 @@ using namespace arma;
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 10
-#define FEASIB_EPS 0.1       // practical "error margin" for unboundedness test
+#define FEASIB_EPS 0.0001       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
 
 // problem status flags
@@ -32,6 +32,7 @@ using namespace arma;
 */
 struct Ellipse{
   mat H; // shape
+  mat B; // shape (decomposed)
   colvec o; // center point
   double vol;
 };
@@ -90,6 +91,8 @@ class EllipsoidSolver: public LPSolver{
   bool isUnbounded(colvec &d); // checks if the problem is unbounded
   // algorithm-specific
   Ellipse getFirstEllipse();
+
+  // Ellipsoid update -- naive version
   inline Ellipse updateEllipse(colvec &wt, Ellipse &E){
     Ellipse newE;
     newE.o = E.o - (1.0/(n+1))*E.H*wt / sqrt(dot(wt,E.H*wt)); // update the center
@@ -99,6 +102,23 @@ class EllipsoidSolver: public LPSolver{
     return newE;
   };
 
+  // Ellipsoid update -- Khachivyan 1980 version
+  inline Ellipse updateEllipseKhachiyan(colvec &wt, Ellipse &E){
+    Ellipse newE;
+    colvec eta = trans(E.B)*wt;
+    mat etaHat(n,n);
+
+    for (int i=0;i<n;i++)
+      for (int j=0;j<n; j++)
+        etaHat(i,j) = eta(i)*eta(j);
+
+    newE.o = E.o - (1.0/(n+1.0))*E.B*eta / sqrt(dot(eta,eta));
+    newE.B = (1 + 1.0/(16.0*n*n))*n/sqrt(n*n-1)*(E.B + (sqrt((n-1.0)/(n+1.0))-1)*E.B*etaHat / dot(eta,eta));
+    newE.H = newE.B * newE.B;
+    return newE;
+  };
+
+  ///
   inline bool stopCriterion(colvec &w, Ellipse &E){
     if(fKnown){
       cout << "optimality gap: " << bestObjective - fStar << endl;
@@ -112,7 +132,9 @@ Ellipse EllipsoidSolver::getFirstEllipse(){ // initialization of E0 (the first e
   Ellipse E0;
   E0.o = colvec(n, fill::zeros);
   E0.H = mat(n,n,fill::eye);
+  E0.B = mat(n,n,fill::eye);
   E0.H = E0.H * pow(Rbig,2);
+  E0.B = E0.B * Rbig;
   E0.vol = pow(M_PI, n/2.0) * pow(Rbig,n) / tgamma(n/2.0 + 1); // volume of the n-ball
   return E0;
 }
@@ -142,7 +164,7 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
         // if we are here -- something does not work properly
       };
     };
-    E = updateEllipse(wt,E);
+    E = updateEllipseKhachiyan(wt,E);
   }while( E.vol > FEASIB_EPS ); // within the logic of Bland et al 1981
   cout << "The problem is found to be bounded" << endl;
   return false;
