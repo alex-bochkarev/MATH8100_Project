@@ -18,7 +18,7 @@ using namespace arma;
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 100
-#define FEASIB_EPS 0.000000001       // practical "error margin" for unboundedness test
+#define FEASIB_EPS 0.00001       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
 
 // problem status flags
@@ -169,7 +169,8 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
       };
     };
     E = updateEllipseKhachiyan(wt,E);
-  }while( E.vol > FEASIB_EPS ); // within the logic of Bland et al 1981
+
+  }while( (E.vol > FEASIB_EPS) && !E.o.has_nan()); // within the logic of Bland et al 1981
   cout << "E.vol is " << E.vol << " while FEASIB_EPS is " << FEASIB_EPS << endl;
   cout << "The problem is found to be bounded" << endl;
   return false;
@@ -205,21 +206,27 @@ colvec EllipsoidSolver::solve()
         bestObjective = valueAt(E.o);
         bestPoint = E.o;
       }
-      if(stopCriterion(wt,E)) timeToStop = true;
-    }else{
-      // the new center is not in the feasible set
-      // find the constraint that was violated
-      for (int i=0;i<m; i++){
-        if(S[i] != 0 ){
-          // we have found a violated constraint;
-          wt = trans(A->row(i));
-          break;
-        }
-      }
-    }
-    E = updateEllipseKhachiyan(wt,E);
-    step++;
-  }while(!timeToStop);
-  status = IS_OPTIMAL;
+      if(stopCriterion(wt,E)){
+        timeToStop = true;
+        status = IS_OPTIMAL;
+        return bestPoint;
+      };
+
+   }else{
+     // the new center is not in the feasible set
+     // find the constraint that was violated
+     for (int i=0;i<m; i++){
+       if(S[i] != 0 ){
+         // we have found a violated constraint;
+         wt = trans(A->row(i));
+         break;
+       }
+     }
+   }
+   E = updateEllipseKhachiyan(wt,E);
+   step++;
+  }while(!timeToStop && !E.o.has_nan());
+  cout << "The problem is infeasible" << endl;
+  status = IS_INFEASIBLE;
   return bestPoint;
 }
