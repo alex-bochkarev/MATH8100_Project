@@ -1,0 +1,19 @@
+# data file for a simple multi-dimensional case
+# (source: MATH8100 HA8, problem 4)
+>epsilon (precision)
+0.01
+>A matrix data
+-1,1
+1,-1
+-1,0
+0,-1
+>b (rhs) data
+1
+1
+0
+0
+>c (costs vector) data
+-1
+0
+#>x -- known optimal solution
+# place data here ...

@@ -18,7 +18,7 @@ using namespace arma;
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 100
-#define FEASIB_EPS 0.0001       // practical "error margin" for unboundedness test
+#define FEASIB_EPS 0.000000001       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
 
 // problem status flags
@@ -115,6 +115,7 @@ class EllipsoidSolver: public LPSolver{
     newE.o = E.o - (1.0/(n+1.0))*E.B*eta / sqrt(dot(eta,eta));
     newE.B = (1 + 1.0/(16.0*n*n))*n/sqrt(n*n-1)*(E.B + (sqrt((n-1.0)/(n+1.0))-1)*E.B*etaHat / dot(eta,eta));
     newE.H = trans(newE.B) * newE.B;
+    newE.vol = E.vol * exp(-1.0/(2*(n+1.0)));
     return newE;
   };
 
@@ -142,11 +143,13 @@ Ellipse EllipsoidSolver::getFirstEllipse(){ // initialization of E0 (the first e
 
 bool EllipsoidSolver::isUnbounded(colvec &d)
 {
+  cout << "Checking for unboundedness..." << endl;
   Ellipse E = getFirstEllipse();
   colvec wt; // a vector for the ellipsoid update
   colvec v;  // infeasibility
   do{
-    cout << "Center is: " << endl << E.o << endl;
+    cout << "Ellipsoid volume is " << E.vol << endl;
+    cout << "The center is: " << endl << E.o << endl;
     cout << "c' d = " << dot(*c, E.o) << endl;
     if (dot(*c,E.o) +1 > UNBOUND_EPS){
       // objective improvement violated
@@ -167,6 +170,7 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
     };
     E = updateEllipseKhachiyan(wt,E);
   }while( E.vol > FEASIB_EPS ); // within the logic of Bland et al 1981
+  cout << "E.vol is " << E.vol << " while FEASIB_EPS is " << FEASIB_EPS << endl;
   cout << "The problem is found to be bounded" << endl;
   return false;
 };
