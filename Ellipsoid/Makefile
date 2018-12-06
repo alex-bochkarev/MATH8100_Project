@@ -1,4 +1,5 @@
 flags = -g -O1 -larmadillo -lblas
+genlogs = logs/gen.log
 src = ./ell-test.cpp
 tgen = ./generate_tests.cpp
 otgen = ./testgen
@@ -18,12 +19,13 @@ compile: ${src}
 tests:
 	./run_tests.sh ${ofile}
 
-testgen:
+testgen: ${tgen}
 	${CPP} ${tgen} -I${GINC} -o ${otgen} ${CPPLIB} -lm
 
 randcases:
-	${otgen} -n 10 -m 5 -N 2 --filename data/randcase
-	${otgen} -n 10 -m 15 -N 2 --filename data/randcase
+	rm data/randcase*
+	${otgen} -n 10 -m 5 -N 50 --filename data/randcase > ${genlogs}
+	${otgen} -n 10 -m 15 -N 50 --filename data/randcase >> ${genlogs}
 
 randtests:
 	./run_rtests.sh ${ofile}

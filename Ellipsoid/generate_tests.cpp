@@ -64,6 +64,7 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
 
     // Optimize model
 
+    model.getEnv().set(GRB_IntParam_DualReductions, 0);
     cout << endl << "Optimizing...";
     model.optimize();
 

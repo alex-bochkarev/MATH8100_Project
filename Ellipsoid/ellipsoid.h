@@ -18,7 +18,7 @@ using namespace arma;
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 100
-#define FEASIB_EPS 0.00001       // practical "error margin" for unboundedness test
+#define FEASIB_EPS 1e-6       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
 #define SET_THICKNESS 1e-8 // a constant for non-full dimensional cases
 // problem status flags
@@ -223,6 +223,7 @@ colvec EllipsoidSolver::solve()
          wt = trans(A->row(i));
          break;
        }
+       if (E.vol < FEASIB_EPS) timeToStop = true;
      }
    }
    E = updateEllipseKhachiyan(wt,E);

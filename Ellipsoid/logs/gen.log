@@ -1,0 +1,2106 @@
+Random test cases generator for the Ellipsoid algorithm implementation
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [4e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [6e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [5e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [3e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-01, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [7e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [8e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [3e-02, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 2e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [5e-02, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [3e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [1e-01, 3e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-01, 5e+00]
+  Objective range  [2e-02, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [8e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [9e-02, 5e+00]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-01, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [5e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [9e-02, 5e+00]
+  Objective range  [4e-02, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e-01, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [8e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-01, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [7e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [9e-02, 5e+00]
+  Objective range  [8e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [1e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [9e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-01, 5e+00]
+  Objective range  [1e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [4e-01, 3e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [8e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e-01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [8e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 2e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [7e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 3e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [6e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [2e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [5e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-01, 5e+00]
+  Objective range  [5e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 5 rows, 10 columns and 50 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+01, 4e+01]
+Presolve time: 0.00s
+Presolved: 5 rows, 10 columns, 50 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 5 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Random test cases generator for the Ellipsoid algorithm implementation
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-03, 5e+00]
+  Objective range  [3e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-03, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 18 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [9e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-04, 5e+00]
+  Objective range  [5e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 17 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-03, 5e+00]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 28 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [9e-03, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [5e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [2e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [8e-02, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e-02, 3e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 18 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [7e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [9e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 15 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [3e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-02, 5e+00]
+  Objective range  [3e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e-01, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 18 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-03, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [3e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [5e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+      19    1.6230431e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 19 iterations and 0.00 seconds
+Optimal objective  1.623043137e+02
+
+Unpacking the solution...
+STATUS: OPTIMAL
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-03, 5e+00]
+  Objective range  [8e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [8e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+      19    1.8634030e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 19 iterations and 0.00 seconds
+Optimal objective  1.863403035e+02
+
+Unpacking the solution...
+STATUS: OPTIMAL
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-03, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e-02, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 10 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [9e-03, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [4e-03, 5e+00]
+  Objective range  [6e-03, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [1e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [7e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-01, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 14 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-01, 5e+00]
+  Objective range  [1e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [5e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 17 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [7e-03, 5e+00]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 12 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [7e-03, 5e+00]
+  Objective range  [5e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 15 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-02, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 15 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [2e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [7e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 20 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [5e-03, 5e+00]
+  Objective range  [4e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 19 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [4e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 15 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [8e-02, 5e+00]
+  Objective range  [6e-02, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [7e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 13 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [8e-03, 5e+00]
+  Objective range  [3e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e-01, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 25 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [5e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 10 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [1e-01, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [5e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 12 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [6e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e-02, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 20 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-02, 5e+00]
+  Objective range  [6e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [9e-01, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 16 iterations and 0.00 seconds
+Infeasible model
+
+Unpacking the solution...
+STATUS: INFEASIBLE
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [6e-02, 5e+00]
+  Objective range  [2e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 10 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+00]
+  Objective range  [1e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [6e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+      20   -2.0478675e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 20 iterations and 0.00 seconds
+Optimal objective -2.047867490e+02
+
+Unpacking the solution...
+STATUS: OPTIMAL
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [3e-02, 5e+00]
+  Objective range  [2e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 4e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+      18    4.8700974e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 18 iterations and 0.00 seconds
+Optimal objective  4.870097440e+00
+
+Unpacking the solution...
+STATUS: OPTIMAL
+Solving the problem with Gurobi solver
+Academic license - for non-commercial use only
+Creating variables...
+Creating constraints...
+Optimizing...Optimize a model with 15 rows, 10 columns and 150 nonzeros
+Coefficient statistics:
+  Matrix range     [2e-01, 5e+00]
+  Objective range  [5e-01, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [3e+00, 5e+01]
+Presolve time: 0.00s
+Presolved: 15 rows, 10 columns, 150 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0      handle free variables                          0s
+
+Solved in 15 iterations and 0.00 seconds
+Unbounded model
+
+Unpacking the solution...
+STATUS: UNBOUNDED
