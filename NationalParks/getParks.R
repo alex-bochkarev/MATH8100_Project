@@ -41,7 +41,11 @@ drop_parks = c("Virgin Islands", "Dry Tortugas", "Biscayne", "Isle Royale") # Mo
 df = filter(df, !((Loc %in% drop_loc) | (Name %in% drop_parks)))
 length(df$Name)
 
-write.csv(select(df,Name,Loc,Lon,Lat, Description),file="data/parks.csv")
+df = select(df, Name, Loc, Lon, Lat, Description);
+
+df = rbind(data.frame(Name="Clemson University", Loc = "South Carolina", Lon = -82.836410, Lat = 34.676709, Description="Start/end point of the trip (Cooper's library)"),df);
+
+write.csv(df,file="data/parks.csv")
 
 ######################################################################
 ## Save a distance map
