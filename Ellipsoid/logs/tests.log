@@ -1,16 +1,16 @@
-Tests run: 2018-12-06 14:28:59
+Tests run: 2018-12-06 15:42:06
  +-----+----------------------+-------------------+-----------------+------------+---------+
  | No. |Test case             | Optimal objective | Found objective | Difference | Result  |
  +-----+----------------------+-------------------+-----------------+------------+---------+
  | PRE-DEFINED TEST CASES (typical situations)                                             |
  +-----+----------------------+-------------------+-----------------+------------+---------+
  | 1   | testcase-20d         |          -797.881 |        -797.880 | -0.000     | OK      |
- | 2   | testcase-2d          |              -4.5 |          -4.498 | -0.002     | OK      |
- | 3   | testcase-2d-UBLine   |                -1 |          -1.000 | -0.000     | OK      |
- | 4   | testcase-2d-UBR      |                -1 |          -0.997 | -0.003     | OK      |
+ | 2   | testcase-2d          |              -4.5 |          -4.500 | 0.000      | OK      |
+ | 3   | testcase-2d-UBLine   |                -1 |          -1.000 | 0.000      | OK      |
+ | 4   | testcase-2d-UBR      |                -1 |          -1.000 | 0.000      | OK      |
  | 5   | testcase-5d          |           -85.931 |         -85.932 | 0.001      | OK      |
  | 6   | testcase-IF          |              +INF |            +INF |            | OK      |
- | 7   | testcase-NFD         |                 2 |           2.003 | -0.003     | OK      |
+ | 7   | testcase-NFD         |                 2 |           2.000 | 0.000      | OK      |
  | 8   | testcase-UB          |              -INF |           -INF  |            | OK      |
  +-----+----------------------+-------------------+-----------------+------------+---------+
  | RANDOMLY GENERATED TEST CASES (robustness check)                                        |
@@ -73,7 +73,7 @@ Tests run: 2018-12-06 14:28:59
  | 64  | randcaseF10x15_14    |              -INF |           -INF  |            | OK      |
  | 65  | randcaseF10x15_15    |              -INF |           -INF  |            | OK      |
  | 66  | randcaseF10x15_16    |              -INF |           -INF  |            | OK      |
- | 67  | randcaseF10x15_17    |           212.372 |         212.364 | 0.007      | OK      |
+ | 67  | randcaseF10x15_17    |           212.372 |         212.364 | 0.008      | OK      |
  | 68  | randcaseF10x15_18    |              -INF |           -INF  |            | OK      |
  | 69  | randcaseF10x15_19    |              -INF |           -INF  |            | OK      |
  | 70  | randcaseF10x15_1     |              -INF |           -INF  |            | OK      |
@@ -105,8 +105,8 @@ Tests run: 2018-12-06 14:28:59
  | 96  | randcaseF10x15_43    |              -INF |           -INF  |            | OK      |
  | 97  | randcaseF10x15_44    |              -INF |           -INF  |            | OK      |
  | 98  | randcaseF10x15_45    |              -INF |           -INF  |            | OK      |
- | 99  | randcaseF10x15_46    |          -39.8707 |         -39.869 | -0.002     | OK      |
- | 100 | randcaseF10x15_47    |           -109.92 |        -109.932 | 0.011      | FAILED  |
+ | 99  | randcaseF10x15_46    |          -39.8707 |         -39.870 | -0.001     | OK      |
+ | 100 | randcaseF10x15_47    |           -109.92 |        -109.933 | 0.013      | FAILED  |
  | 101 | randcaseF10x15_48    |              -INF |           -INF  |            | OK      |
  | 102 | randcaseF10x15_49    |              -INF |           -INF  |            | OK      |
  | 103 | randcaseF10x15_4     |              +INF |            +INF |            | OK      |
@@ -170,7 +170,7 @@ Tests run: 2018-12-06 14:28:59
  | 161 | randcaseNN10x15_11   |              -INF |           -INF  |            | OK      |
  | 162 | randcaseNN10x15_12   |              -INF |           -INF  |            | OK      |
  | 163 | randcaseNN10x15_13   |              -INF |           -INF  |            | OK      |
- | 164 | randcaseNN10x15_14   |           46.3735 |          46.377 | -0.004     | OK      |
+ | 164 | randcaseNN10x15_14   |           46.3735 |          46.374 | -0.000     | OK      |
  | 165 | randcaseNN10x15_15   |              -INF |           -INF  |            | OK      |
  | 166 | randcaseNN10x15_16   |              -INF |           -INF  |            | OK      |
  | 167 | randcaseNN10x15_17   |              -INF |           -INF  |            | OK      |
@@ -222,7 +222,7 @@ Tests run: 2018-12-06 14:28:59
  | 213 | randcaseNN10x20_13   |              -INF |           -INF  |            | OK      |
  | 214 | randcaseNN10x20_14   |              +INF |            +INF |            | OK      |
  | 215 | randcaseNN10x20_15   |              -INF |           -INF  |            | OK      |
- | 216 | randcaseNN10x20_16   |           3533.12 |        3531.513 | 1.607      | FAILED  |
+ | 216 | randcaseNN10x20_16   |           3533.12 |        3531.508 | 1.612      | FAILED  |
  | 217 | randcaseNN10x20_17   |              +INF |            +INF |            | OK      |
  | 218 | randcaseNN10x20_18   |              +INF |            +INF |            | OK      |
  | 219 | randcaseNN10x20_19   |              +INF |            +INF |            | OK      |
@@ -240,7 +240,7 @@ Tests run: 2018-12-06 14:28:59
  | 231 | randcaseNN10x20_2    |              -INF |           -INF  |            | OK      |
  | 232 | randcaseNN10x20_30   |              -INF |           -INF  |            | OK      |
  | 233 | randcaseNN10x20_31   |              -INF |           -INF  |            | OK      |
- | 234 | randcaseNN10x20_32   |          -158.996 |        -158.994 | -0.002     | OK      |
+ | 234 | randcaseNN10x20_32   |          -158.996 |        -158.995 | -0.001     | OK      |
  | 235 | randcaseNN10x20_33   |              +INF |            +INF |            | OK      |
  | 236 | randcaseNN10x20_34   |              -INF |           -INF  |            | OK      |
  | 237 | randcaseNN10x20_35   |              -INF |           -INF  |            | OK      |
@@ -287,7 +287,7 @@ Tests run: 2018-12-06 14:28:59
  | 278 | randcaseNN10x25_27   |              +INF |            +INF |            | OK      |
  | 279 | randcaseNN10x25_28   |              +INF |            +INF |            | OK      |
  | 280 | randcaseNN10x25_29   |              +INF |            +INF |            | OK      |
- | 281 | randcaseNN10x25_2    |           14.1234 |          14.125 | -0.002     | OK      |
+ | 281 | randcaseNN10x25_2    |           14.1234 |          14.125 | -0.001     | OK      |
  | 282 | randcaseNN10x25_30   |              -INF |           -INF  |            | OK      |
  | 283 | randcaseNN10x25_31   |              +INF |            +INF |            | OK      |
  | 284 | randcaseNN10x25_32   |              -INF |           -INF  |            | OK      |
@@ -295,7 +295,7 @@ Tests run: 2018-12-06 14:28:59
  | 286 | randcaseNN10x25_34   |              +INF |            +INF |            | OK      |
  | 287 | randcaseNN10x25_35   |              +INF |            +INF |            | OK      |
  | 288 | randcaseNN10x25_36   |              +INF |            +INF |            | OK      |
- | 289 | randcaseNN10x25_37   |           44.5619 |          44.562 | -0.001     | OK      |
+ | 289 | randcaseNN10x25_37   |           44.5619 |          44.562 | -0.000     | OK      |
  | 290 | randcaseNN10x25_38   |              +INF |            +INF |            | OK      |
  | 291 | randcaseNN10x25_39   |              +INF |            +INF |            | OK      |
  | 292 | randcaseNN10x25_3    |              +INF |            +INF |            | OK      |

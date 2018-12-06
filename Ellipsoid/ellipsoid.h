@@ -17,7 +17,7 @@ using namespace arma;
 
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
-#define ERR_FACTOR 1e2
+#define ERR_FACTOR 1e3
 #define FEASIB_EPS 1e-100       // practical "error margin" for unboundedness and infeasibility test
 #define UNBOUND_EPS 0.0001
 #define SET_THICKNESS 1e-8 // a constant for non-full dimensional cases
@@ -126,8 +126,8 @@ class EllipsoidSolver: public LPSolver{
       cout << "optimality gap: " << bestObjective - fStar << endl;
     }
     cout << "w=" << endl << w << endl << "H=" << endl << E.H << endl;
-    cout << "Criterion value: " << sqrt(dot(w,E.H*w)) << endl;
-    return(sqrt(dot(w,E.H*w) < eps/ERR_FACTOR)); // see Dr. Boyd's notes (TODO: citation in the report)
+    cout << "Criterion value: " << sqrt(dot(*c,E.B*(*c))) << "; while eps/ERR_F =" << eps/ERR_FACTOR << endl;
+    return(sqrt(dot(*c,E.B*(*c))) < eps/ERR_FACTOR); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
 
