@@ -8,6 +8,8 @@
 #include <fstream>
 #include <vector>
 #include <iomanip>
+#include <ctime>
+#include <chrono>
 
 void showUsage(char *progname)
 {
@@ -125,9 +127,16 @@ int main(int argc, char **argv)
   if(answerKnown) cout << "Known optimal solution:\n" << xStar << endl;
 
   EllipsoidSolver solver(eps);
+
   solver.setModel(c,A,b);
+
   if(answerKnown) solver.setFstar(solver.valueAt(xStar));
+
+  auto wcts = std::chrono::system_clock::now();
   colvec opt = solver.solve();
+  chrono::duration<double> wctduration = (chrono::system_clock::now() - wcts);
+  cout << "Running time [seconds, Wall Clock]: " << fixed << setprecision(2) << wctduration.count() << endl;
+
 
   if (answerKnown) cout << "Optimal objective (known): " << solver.valueAt(xStar) << endl;
 
