@@ -116,6 +116,7 @@ int main(int argc, char **argv){
   int n,m,N;
   double al,bl,cl, eps;
   string fname;
+  bool nonneg = false;
   // Declare the supported options.
   po::options_description desc("Allowed options");
   desc.add_options()
@@ -128,6 +129,7 @@ int main(int argc, char **argv){
     (",b", po::value<double>(&bl)->default_value(DEFAULT_B), "limits for b_i values (-b..b will be generated)")
     (",c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
     ("filename,f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
+    ("nonnegative", po::value<bool>(&nonneg)->default_value(nonneg), "add nonnegativity constraints (x>=0)")
     ;
 
   po::variables_map vm;
@@ -141,10 +143,15 @@ int main(int argc, char **argv){
   po::notify(vm);
   // now we have all the necessary arguments
 
-  assert(n>0 && m>0 && N>0);
+  if(!(n>0 && m>0 && N>0)){
+    cerr << "Wrong arguments -- n, m and N must be strictly positive" << endl;
+    return 1;
+  }
 
   ofstream testcase;
   time_t rawtime;
+  double m0 = m;
+  if(nonneg) m = m0 + n; // add n nonnegativity constraints
 
   mat A(m,n,fill::zeros);
   mat Az = mat(m,n,fill::ones)*0.5;
@@ -179,6 +186,15 @@ int main(int argc, char **argv){
     A.randu(); A = (A - Az)*al;
     b.randu(); b = (b - bz)*bl;
     c.randu(); c = (c - cz)*cl;
+
+    colvec o(n, fill::zeros);
+    if(nonneg)
+      for(int j=0;j<n;j++){
+        o(j) = -1;
+        A.row(m0+j) = trans(o);
+        o(j) = 0;
+        b(m0+j) = 0;
+      };
 
     testcase << ">epsilon -- precision parameter" << endl;
     testcase << eps << endl;

@@ -24,8 +24,13 @@ testgen: ${tgen}
 
 randcases:
 	rm data/randcase*
-	${otgen} -n 10 -m 5 -N 50 --filename data/randcase > ${genlogs}
-	${otgen} -n 10 -m 15 -N 50 --filename data/randcase >> ${genlogs}
+	${otgen} -n 10 -m 5 -N 50 --filename data/randcaseF > ${genlogs}
+	${otgen} -n 10 -m 5 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+	${otgen} -n 10 -m 10 -N 50 --filename data/randcaseF >> ${genlogs}
+	${otgen} -n 10 -m 10 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+	${otgen} -n 10 -m 15 -N 50 --filename data/randcaseF >> ${genlogs}
+	${otgen} -n 10 -m 15 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+
 
 randtests:
 	./run_rtests.sh ${ofile}

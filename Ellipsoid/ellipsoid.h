@@ -17,8 +17,8 @@ using namespace arma;
 
 // module-specific constants
 #define Rbig 1000            // big-enough ball radius for the initial ellipsoid
-#define ERR_FACTOR 100
-#define FEASIB_EPS 1e-6       // practical "error margin" for unboundedness test
+#define ERR_FACTOR 1e2
+#define FEASIB_EPS 1e-100       // practical "error margin" for unboundedness and infeasibility test
 #define UNBOUND_EPS 0.0001
 #define SET_THICKNESS 1e-8 // a constant for non-full dimensional cases
 // problem status flags
@@ -116,7 +116,7 @@ class EllipsoidSolver: public LPSolver{
     newE.o = E.o - (1.0/(n+1.0))*E.B*eta / sqrt(dot(eta,eta));
     newE.B = (1 + 1.0/(16.0*n*n))*n/sqrt(n*n-1)*(E.B + (sqrt((n-1.0)/(n+1.0))-1)*E.B*etaHat / dot(eta,eta));
     newE.H = trans(newE.B) * newE.B;
-    newE.vol = E.vol * exp(-1.0/(2*(n+1.0)));
+    newE.vol = E.vol * exp(-1.0/(2.0*(n+1.0)));
     return newE;
   };
 
@@ -197,7 +197,7 @@ colvec EllipsoidSolver::solve()
   int step=0;
   do{
    S = checkFeasibility(E.o);
-   cout << "Step " << step << "====================================================" << endl;
+   cout << "Step " << step << " ====================================================" << endl;
    cout << "No.of violated constraints: " << accu(S) << endl;
    if(accu(S) == 0){ // no constraints are violated
       // the center is in the feasible set
@@ -223,7 +223,11 @@ colvec EllipsoidSolver::solve()
          wt = trans(A->row(i));
          break;
        }
-       if (E.vol < FEASIB_EPS) timeToStop = true;
+       if (E.vol < FEASIB_EPS) {
+         cout << "E.vol=" << E.vol << " while FEASIB_EPS=" << FEASIB_EPS << endl;
+         timeToStop = true;
+         break;
+       }
      }
    }
    E = updateEllipseKhachiyan(wt,E);
