@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <iomanip>
 
 void showUsage(char *progname)
 {
@@ -36,30 +37,50 @@ int main(int argc, char **argv)
   colvec xStar; bool answerKnown=false;
 
   stringstream ssA, ssb, ssc, ssX;
+  int knownStatus = IS_UNSOLVED;
 
   while(getline(file, line)){
     if(line[0]=='#') continue; // commented out line found
     if(line[0]=='>'){mode=line[1];continue;};
-
+    cout << "First symbol is " << mode << endl;
     switch(mode){
-      case 'A':
+    case 'A':
         ssA << line;
         ssA << endl;
         break;
-      case 'b':
+    case 'b':
         ssb << line  << endl;
         break;
-      case 'c':
+    case 'c':
         ssc << line  << endl;
         break;
-      case 'e':
+    case 'e':
         eps = stod(line); // notice that I will take +1 order in precision to be sure with rounding errors
         mode='0';
         break;
-      case 'x':
+    case 'x':
         ssX << line << endl;
         answerKnown=true;
         break;
+    case 'S':
+      switch(line[0]){
+      case 'I':
+        knownStatus = IS_INFEASIBLE;
+        cout << "INFEASIBLE" << endl;
+        break;
+      case 'U':
+        knownStatus = IS_UNBOUNDED;
+        cout << "UNBOUNDED" << endl;
+        break;
+      default:
+        cout << "UNKNOWN" << endl;
+        cerr << "Error parsing input file:" << endl;
+        cerr << "The line starting with '!' is expected to contain a (known) status specifier for the solution:" << endl;
+        cerr << "U for UNBOUNDED" << endl << "I for INFEASIBLE" << endl;
+        return 1;
+      };
+      mode = '0';
+      break;
     case '0':
       break;
     default:
@@ -111,13 +132,11 @@ int main(int argc, char **argv)
 
   switch(solver.getStatus()){
   case IS_OPTIMAL:
-    cout << "Optimal point found is:\n" << opt;
-    cout << "Optimal objective: " << solver.valueAt(opt) << endl;
+    cout << "Optimal point (found):" << endl << opt;
+    cout << "Optimal objective (found): " << setprecision(3) << fixed << solver.valueAt(opt) << endl;
     if(answerKnown){
-      cout << endl << "Known solution check:" << endl;
-      cout << "Objective at the point found: " << solver.valueAt(opt) << endl;
-      cout << "Objective at the known opt point: " << solver.valueAt(xStar) << endl;
-      cout << "Optimality gap: " << solver.valueAt(xStar) - solver.valueAt(opt) << endl;
+      cout << "Optimal objective (known): " << solver.valueAt(xStar) << endl;
+      cout << "Objective value error: " << solver.valueAt(xStar) - solver.valueAt(opt) << endl;
       cout << "SOLUTION CHECK: ";
     if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=eps){
       cout << "OK" << endl;
@@ -125,13 +144,15 @@ int main(int argc, char **argv)
     }
     break;
   case IS_UNBOUNDED:
-    cout << "Optimal objective: -INF " << endl;
+    cout << "Optimal objective (found): -INF " << endl;
     cout << "The problem is unbounded. A direction of feasible ray with infinite cost:" << endl;
     cout << opt;
+    if(knownStatus == IS_UNBOUNDED) cout << "Optimal objective (known): -INF" << endl << "SOLUTION CHECK: OK" << endl;
     break;
   case IS_INFEASIBLE:
-    cout << "Optimal objective: +INF" << endl;
+    cout << "Optimal objective (found): +INF" << endl;
     cout << "The problem is infeasible." << endl;
+    if(knownStatus == IS_INFEASIBLE) cout << "Optimal objective (known): +INF" << endl << "SOLUTION CHECK: OK" << endl;
     break;
   case IS_UNSOLVED:
     cerr << "UNSOLVED" << endl;
