@@ -26,6 +26,7 @@ using namespace arma;
 #define IS_OPTIMAL     1
 #define IS_UNBOUNDED   2
 #define IS_INFEASIBLE -1
+#define IS_FEASIBLE    3 // status for 'in progress'
 
 /* *******************************************************************
   Basic structure for an ellipsoid representation
@@ -205,6 +206,7 @@ colvec EllipsoidSolver::solve()
         // we have found a better solution
         bestObjective = valueAt(E.o);
         bestPoint = E.o;
+        status = IS_FEASIBLE;
       }
       if(stopCriterion(wt,E)){
         timeToStop = true;
@@ -226,7 +228,10 @@ colvec EllipsoidSolver::solve()
    E = updateEllipseKhachiyan(wt,E);
    step++;
   }while(!timeToStop && !E.o.has_nan());
-  cout << "The problem is infeasible" << endl;
-  status = IS_INFEASIBLE;
+  if (status==IS_FEASIBLE){
+    status = IS_OPTIMAL; // seems like we have seen an optimal solution
+  }else{
+    status = IS_INFEASIBLE;
+  };
   return bestPoint;
 }

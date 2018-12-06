@@ -1,0 +1,18 @@
+# data file for a simple multi-dimensional case
+# non-full dimensional case
+>epsilon (precision)
+0.01
+>A matrix data
+-1,0
+1,-1
+-1,1
+>b (rhs) data
+-1
+0
+0
+>c (costs vector) data
+1
+1
+>x -- known optimal solution
+1
+1
