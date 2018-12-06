@@ -11,7 +11,8 @@
 #include <boost/program_options.hpp>
 #include <fstream>
 #include <ctime>
-#include "gurobi_c++.h"
+#include <iomanip>
+#include <gurobi_c++.h>
 
 using namespace std;
 using namespace arma;
@@ -19,6 +20,7 @@ namespace po = boost::program_options;
 
 #define DEFAULT_PRECISION 0.01
 #define DEFAULT_A 10
+#define DEFAULT_C 10
 #define DEFAULT_B 100
 #define DEFAULT_FNAME "randcase"
 
@@ -42,7 +44,7 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
     for(int i=0;i<n;i++){
       ostringstream vname;
       vname << "x" << i;
-      x[i] = model.addVar(GRB.INFINITY, GRB.INFINITY, c(i), GRB.CONTINUOS, vname.str());
+      x[i] = model.addVar(-GRB_INFINITY, GRB_INFINITY, c(i), GRB_CONTINUOUS, vname.str());
       vname.str("");
     }
 
@@ -103,18 +105,19 @@ int main(int argc, char **argv){
 
   // program parameters
   int n,m,N;
-  double al,bl,eps;
+  double al,bl,cl, eps;
   string fname;
   // Declare the supported options.
   po::options_description desc("Allowed options");
   desc.add_options()
     ("help", "show this help message")
     ("n", po::value<int>(&n)->required(), "number of variables (integer)")
-    ("m", po::val ue<int>(&m)->required(), "number of constraints (integer)")
+    ("m", po::value<int>(&m)->required(), "number of constraints (integer)")
     ("N", po::value<int>(&N)->required(), "number of test cases to generate")
     ("e", po::value<double>(&eps)->default_value(DEFAULT_PRECISION), "precision (epsilon) -- optional")
     ("a", po::value<double>(&al)->default_value(DEFAULT_A), "limits for a_ij values (-a..a will be generated)")
     ("b", po::value<double>(&bl)->default_value(DEFAULT_B), "limits for b_i values (-b..b will be generated)")
+    ("c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
     ("f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
     ;
 
@@ -160,7 +163,7 @@ int main(int argc, char **argv){
     testcase << "# Randomly generated test case" << endl;
     testcase << "# Case number: " << i;
     testcase << "; Generated: " << asctime(localtime ( &rawtime )) << endl;
-    testcase << "# Parameters: n=" << n << ", m=" << m << ", a=" << a << ",b=" << b << endl;
+    testcase << "# Parameters: n=" << n << ", m=" << m << ", a=" << al << ",b=" << bl << endl;
     // generate the numbers
     A.randu(); A = (A - Az)*al;
     b.randu(); b = (b - bz)*bl;
@@ -178,9 +181,24 @@ int main(int argc, char **argv){
       return 1;
     }
 
-    switch
+    switch(status){
+    case GRB_OPTIMAL:
+      testcase << ">x -- known optimal solution" << endl << x << endl;
+      testcase << "# Optimal objective: " << optObj << endl;
+      break;
+    case GRB_INFEASIBLE:
+      testcase << ">Status flag:" << endl << "INFEASIBLE";
+      break;
+    case GRB_UNBOUNDED:
+      testcase << ">Status flag:" << endl << "UNBOUNDED";
+      break;
+    default:
+      testcase << "WRONG FLAG: " << status << endl;
+      testcase.close();
+      return 1;
+    };
     testcase.close();
-  }
+  };
 
   return 0;
 }
