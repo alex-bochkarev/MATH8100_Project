@@ -42,7 +42,6 @@ int main(int argc, char **argv)
   while(getline(file, line)){
     if(line[0]=='#') continue; // commented out line found
     if(line[0]=='>'){mode=line[1];continue;};
-    cout << "First symbol is " << mode << endl;
     switch(mode){
     case 'A':
         ssA << line;

@@ -36,11 +36,12 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
 
     // Create variables
 
-    int n = size(A)[0];
-    int m = size(A)[1];
+    int n = size(A)[1];
+    int m = size(A)[0];
 
     GRBVar x[n];
 
+    cout << "Creating variables...";
     for(int i=0;i<n;i++){
       ostringstream vname;
       vname << "x" << i;
@@ -52,6 +53,7 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
 
     // Add constraints Ax <= b
 
+    cout << endl << "Creating constraints...";
     for(int i=0;i<m;i++){
       GRBLinExpr expr = 0;
       for(int j=0;j<n;j++)
@@ -62,14 +64,18 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
 
     // Optimize model
 
+    cout << endl << "Optimizing...";
     model.optimize();
 
     // unpack the solution
 
+    cout << endl << "Unpacking the solution..." << endl;
     status = model.get(GRB_IntAttr_Status);
 
+    cout << "STATUS: ";
     switch(status){
     case GRB_OPTIMAL:
+      cout << "OPTIMAL" << endl;
       // save the optimal point
       for(int i=0;i<n;i++)
         sol(i) = x[i].get(GRB_DoubleAttr_X);
@@ -77,9 +83,11 @@ bool solveModel(mat &A, colvec &b, colvec &c, int &status, colvec &sol, double &
       return true;
       break;
     case GRB_INFEASIBLE:
+      cout << "INFEASIBLE" << endl;
       return true;
       break;
     case GRB_UNBOUNDED:
+      cout << "UNBOUNDED" << endl;
       return true;
       break;
     default:
@@ -111,25 +119,25 @@ int main(int argc, char **argv){
   po::options_description desc("Allowed options");
   desc.add_options()
     ("help", "show this help message")
-    ("n", po::value<int>(&n)->required(), "number of variables (integer)")
-    ("m", po::value<int>(&m)->required(), "number of constraints (integer)")
-    ("N", po::value<int>(&N)->required(), "number of test cases to generate")
-    ("e", po::value<double>(&eps)->default_value(DEFAULT_PRECISION), "precision (epsilon) -- optional")
-    ("a", po::value<double>(&al)->default_value(DEFAULT_A), "limits for a_ij values (-a..a will be generated)")
-    ("b", po::value<double>(&bl)->default_value(DEFAULT_B), "limits for b_i values (-b..b will be generated)")
-    ("c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
-    ("f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
+    (",n", po::value<int>(&n)->required(), "number of variables (integer)")
+    (",m", po::value<int>(&m)->required(), "number of constraints (integer)")
+    (",N", po::value<int>(&N)->required(), "number of test cases to generate")
+    (",e", po::value<double>(&eps)->default_value(DEFAULT_PRECISION), "precision (epsilon) -- optional")
+    (",a", po::value<double>(&al)->default_value(DEFAULT_A), "limits for a_ij values (-a..a will be generated)")
+    (",b", po::value<double>(&bl)->default_value(DEFAULT_B), "limits for b_i values (-b..b will be generated)")
+    (",c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
+    ("filename,f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
     ;
 
   po::variables_map vm;
   po::store(po::parse_command_line(argc, argv, desc), vm);
-  po::notify(vm);
 
   if (vm.count("help")) {
     cout << desc << endl;
-    return 1;
+    return 0;
   };
 
+  po::notify(vm);
   // now we have all the necessary arguments
 
   assert(n>0 && m>0 && N>0);
@@ -137,19 +145,21 @@ int main(int argc, char **argv){
   ofstream testcase;
   time_t rawtime;
 
-  mat A(m,n);
+  mat A(m,n,fill::zeros);
   mat Az = mat(m,n,fill::ones)*0.5;
-  colvec b(m);
+  colvec b(m,fill::zeros);
 
   colvec bz = colvec(m, fill::ones)*0.5;
 
   colvec c(n);
   colvec cz = colvec(n, fill::ones)*0.5;
 
-  colvec x(n);
+  colvec x(n,fill::zeros);
 
   int status = -1;
   double optObj = -999;
+
+  arma_rng::set_seed_random(); // set the seed for RNG
 
   string fileName;
   for(int i=0;i<N; i++){
@@ -171,9 +181,9 @@ int main(int argc, char **argv){
 
     testcase << ">epsilon -- precision parameter" << endl;
     testcase << eps << endl;
-    testcase << ">A matrix data" << endl << A << endl;
-    testcase << ">b (rhs) data" << endl << b << endl;
-    testcase << ">c (costs vector) data" << endl << c << endl;
+    testcase << ">A matrix data" << endl << A;
+    testcase << ">b (rhs) data" << endl << b;
+    testcase << ">c (costs vector) data" << endl << c;
 
     if(!solveModel(A,b,c,status,x,optObj)){
       cerr << "Error during solving the model: " << fileName << endl;

@@ -10,7 +10,7 @@ CPPLIB = -L$$(dirname $$(locate libgurobi_c++)) -lgurobi_c++ -lgurobi81 -larmadi
 CPP = g++
 .PHONY: all, compile, tests, testgen
 
-all: compile tests
+all: compile testgen tests
 
 compile: ${src}
 	${CPP} ${src} ${flags} -o ${ofile}
