@@ -24,13 +24,13 @@ Problem folder is [NationalParks](./NationalParks/).
 - working prototype: [Ellipsoid](./Ellipsoid/); algorithm is in the `.h`-file; testing client is in the `.cpp` file;
 - written in C++, compiled under Linux with `armadillo` and `blas` libraries;
 - test cases data are in the [data](./Ellipsoid/data) folder, the format is (hopefully) self-explanatory. I've tried cases with 2,5 and 20 variables;
-- functionality, in a nutshell: minimize c^T x s.t. Ax <= b, for bounded feasible region. Finds approximate solution (with a given precision eps)
+- functionality, in a nutshell: minimize c^T x s.t. Ax <= b, such that there is a feasible point somewhere in a **sufficiently large** ball around the origin. Finds approximate solution (with a given precision eps)
 - test runs are summarized in a [table](./Ellipsoid/logs/tests.log), logs for specific runs can be found the the [logs](./Ellipsoid/logs/) folder
-- high chances that there are numerical issues with this "naive" implementation!
-- no description / serious analysis yet
+- there were numerical issues with this "naive" implementation -- mostly solved;
+- Algorithm adjustments made: infeasible region, unbounded problem, non-full-dim feasible set;
 - TODOs left:
-	+ Algorithm adjustments: infeasible region, unbounded problem, just "big" feasible region (adjust initial ellipsoid?); -- AB
-	+ Analytics: 2D demo / ellipse pics; convergence graph; maybe time complexity? -- AB
+    + Random test cases -- AB;
+    + Analytics: 2D demo / ellipse pics; convergence graph; maybe time complexity? -- AB
 	+ Additional topics: comparison to the simplex method on "general" problems and Klee-Minty cubes! -- AB
 	+ Write-Up -- AB
 
