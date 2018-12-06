@@ -20,7 +20,7 @@ using namespace arma;
 #define ERR_FACTOR 100
 #define FEASIB_EPS 0.00001       // practical "error margin" for unboundedness test
 #define UNBOUND_EPS 0.0001
-
+#define SET_THICKNESS 1e-8 // a constant for non-full dimensional cases
 // problem status flags
 #define IS_UNSOLVED    0
 #define IS_OPTIMAL     1
@@ -67,7 +67,7 @@ protected:
   void setFstar(double f){ fStar = f; fKnown = true; }; // set the known solution (if known) -- for the check after solution
   virtual colvec solve() = 0; // has to be defined for specific solvers, obviously
   inline uvec checkFeasibility(colvec &x){
-    return( (*A) * x > (*b)); // no constraints are violated
+    return( (*A) * x > (*b) + SET_THICKNESS); // no constraints are violated
   };
 
   double valueAt(colvec &x){

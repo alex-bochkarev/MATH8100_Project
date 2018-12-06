@@ -130,12 +130,13 @@ int main(int argc, char **argv)
   if(answerKnown) solver.setFstar(solver.valueAt(xStar));
   colvec opt = solver.solve();
 
+  if (answerKnown) cout << "Optimal objective (known): " << solver.valueAt(xStar) << endl;
+
   switch(solver.getStatus()){
   case IS_OPTIMAL:
-    cout << "Optimal point (found):" << endl << opt;
     cout << "Optimal objective (found): " << setprecision(3) << fixed << solver.valueAt(opt) << endl;
+    cout << "Optimal point (found):" << endl << opt;
     if(answerKnown){
-      cout << "Optimal objective (known): " << solver.valueAt(xStar) << endl;
       cout << "Objective value error: " << solver.valueAt(xStar) - solver.valueAt(opt) << endl;
       cout << "SOLUTION CHECK: ";
     if(abs(solver.valueAt(opt)-solver.valueAt(xStar))<=eps){
@@ -147,12 +148,20 @@ int main(int argc, char **argv)
     cout << "Optimal objective (found): -INF " << endl;
     cout << "The problem is unbounded. A direction of feasible ray with infinite cost:" << endl;
     cout << opt;
-    if(knownStatus == IS_UNBOUNDED) cout << "Optimal objective (known): -INF" << endl << "SOLUTION CHECK: OK" << endl;
+    if(knownStatus == IS_UNBOUNDED){
+      cout << "Optimal objective (known): -INF" << endl << "SOLUTION CHECK: OK" << endl;
+    }else{
+      if(answerKnown) cout << "SOLUTION CHECK: FAILED" << endl;
+    }
     break;
   case IS_INFEASIBLE:
     cout << "Optimal objective (found): +INF" << endl;
     cout << "The problem is infeasible." << endl;
-    if(knownStatus == IS_INFEASIBLE) cout << "Optimal objective (known): +INF" << endl << "SOLUTION CHECK: OK" << endl;
+    if(knownStatus == IS_INFEASIBLE) {
+      cout << "Optimal objective (known): +INF" << endl << "SOLUTION CHECK: OK" << endl;
+    }else{
+      if (answerKnown) cout << "SOLUTION CHECK: FAILED" << endl;
+    }
     break;
   case IS_UNSOLVED:
     cerr << "UNSOLVED" << endl;
