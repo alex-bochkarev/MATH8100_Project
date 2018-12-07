@@ -65,7 +65,7 @@ protected:
     m = size(*A)[0];
   };
   void setFstar(double f){ fStar = f; fKnown = true; }; // set the known solution (if known) -- for the check after solution
-  virtual colvec solve() = 0; // has to be defined for specific solvers, obviously
+  virtual colvec solve(bool verbose = false) = 0; // has to be defined for specific solvers, obviously
   inline uvec checkFeasibility(colvec &x){
     return( (*A) * x > (*b) + SET_THICKNESS); // no constraints are violated
   };
@@ -83,17 +83,17 @@ class EllipsoidSolver: public LPSolver{
   double bestObjective;
   colvec bestPoint;
   double eps;
- public:
+public:
   EllipsoidSolver(double precision) {
     bestObjective = std::numeric_limits<double>::infinity(); // set the objective to +inf
     eps = precision;
   };
-  colvec solve();
-  bool isUnbounded(colvec &d); // checks if the problem is unbounded
-  // algorithm-specific
-  Ellipse getFirstEllipse();
+colvec solve(bool verbose = false);
+bool isUnbounded(colvec &d); // checks if the problem is unbounded
+// algorithm-specific
+Ellipse getFirstEllipse();
 
-  // Ellipsoid update -- naive version
+// Ellipsoid update -- naive version
   inline Ellipse updateEllipse(colvec &wt, Ellipse &E){
     Ellipse newE;
     newE.o = E.o - (1.0/(n+1))*E.H*wt / sqrt(dot(wt,E.H*wt)); // update the center
@@ -149,15 +149,15 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
   colvec wt; // a vector for the ellipsoid update
   colvec v;  // infeasibility
   do{
-    cout << "Ellipsoid volume is " << E.vol << endl;
-    cout << "The center is: " << endl << E.o << endl;
-    cout << "c' d = " << dot(*c, E.o) << endl;
+    //cout << "Ellipsoid volume is " << E.vol << endl;
+    //cout << "The center is: " << endl << E.o << endl;
+    //cout << "c' d = " << dot(*c, E.o) << endl;
     if (dot(*c,E.o) +1 > UNBOUND_EPS){
       // objective improvement violated
       wt = *c;
     }else{
       v = (*A)*E.o;
-      cout << "v is " << endl << v << endl;
+      //cout << "v is " << endl << v << endl;
       // objective improvement satisfied -- let's check for feasibility
       if(max(v) < UNBOUND_EPS){
         // we have found an "unboundedness direction"
@@ -172,14 +172,14 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
     E = updateEllipseKhachiyan(wt,E);
 
   }while( (E.vol > FEASIB_EPS) && !E.o.has_nan()); // within the logic of Bland et al 1981
-  cout << "E.vol is " << E.vol << " while FEASIB_EPS is " << FEASIB_EPS << endl;
-  cout << "The problem is found to be bounded" << endl;
+  //cout << "E.vol is " << E.vol << " while FEASIB_EPS is " << FEASIB_EPS << endl;
+  //cout << "The problem is found to be bounded" << endl;
   return false;
 };
 
 //////////////////////////////////////////////////////////////////////////////
 // the core function for the solver
-colvec EllipsoidSolver::solve()
+colvec EllipsoidSolver::solve(bool verbose)
 {
   if (A==NULL || b==NULL || c==NULL || n==0) throw std::invalid_argument("Model parameters A,b,c are not fully specified (consider calling setModel(...)) first)");
   // first, check unboundedness
@@ -195,11 +195,28 @@ colvec EllipsoidSolver::solve()
   uvec S;
 
   int step=0;
+  stringstream outp;
+
   do{
-   S = checkFeasibility(E.o);
-   cout << "Step " << step << " ====================================================" << endl;
-   cout << "No.of violated constraints: " << accu(S) << endl;
-   if(accu(S) == 0){ // no constraints are violated
+    S = checkFeasibility(E.o);
+
+    if(verbose){
+      cout << "STEP #: " << step << endl;
+      cout << "Ellipse:" << endl;
+      cout << "center:" << endl;
+      E.o.save(outp,csv_ascii);
+      cout << outp.str() << endl;
+      outp.str("");
+      cout << "shape:" << endl;
+      E.H.save(outp,csv_ascii);
+      cout << outp.str();
+
+      if(accu(S)!=0) { cout << "infeasible" << endl; }else{ cout << "feasible" << endl;};
+      cout << "VIOLATED CONSTRAINTS: " << accu(S) << endl;
+      outp.str("");
+    };
+
+    if(accu(S) == 0){ // no constraints are violated
       // the center is in the feasible set
       wt = *c; // as c is basically the gradient vector for the linear objective
       if (valueAt(E.o)<=bestObjective){
@@ -224,14 +241,18 @@ colvec EllipsoidSolver::solve()
          break;
        }
        if (E.vol < FEASIB_EPS) {
-         cout << "E.vol=" << E.vol << " while FEASIB_EPS=" << FEASIB_EPS << endl;
+         if(verbose) cout << "E.vol=" << E.vol << " while FEASIB_EPS=" << FEASIB_EPS << endl;
          timeToStop = true;
          break;
        }
      }
-   }
-   E = updateEllipseKhachiyan(wt,E);
-   step++;
+    };
+    if(verbose){
+      wt.save(outp,csv_ascii);
+      cout << "wt:" << endl << outp.str();
+    };
+    E = updateEllipseKhachiyan(wt,E);
+    step++;
   }while(!timeToStop && !E.o.has_nan());
   if (status==IS_FEASIBLE){
     status = IS_OPTIMAL; // seems like we have seen an optimal solution

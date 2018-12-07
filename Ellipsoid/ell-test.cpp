@@ -14,18 +14,24 @@
 void showUsage(char *progname)
 {
   cout << "USAGE:" << endl;
-  cout << progname << " <filename>" << endl;
+  cout << progname << " <filename> [--verbose]" << endl;
   cout << "Where *.data files are corresponding problem coefficients and <epsilon> is the required precision (number)" << endl;
+  cout << "verbose option allows for more detailed logging" << endl;
 }
 
 int main(int argc, char **argv)
 {
   if (argc<1){
-    cout << argc << ": wrong number of arguments. Expected exactly 1 (filename)." << endl;
+    cout << argc << ": wrong number of arguments. Expected at least 1 (filename)." << endl;
     showUsage(argv[0]);
     return 1;
   };
 
+  bool verbose = false;
+  if (argc==3) if(!strcmp(argv[2],"--verbose")){
+      verbose = true;
+      cout << "Entering verbose mode..." << endl;
+    };
 
   ifstream file;
   file.open(argv[1]);
@@ -133,7 +139,7 @@ int main(int argc, char **argv)
   if(answerKnown) solver.setFstar(solver.valueAt(xStar));
 
   auto wcts = std::chrono::system_clock::now();
-  colvec opt = solver.solve();
+  colvec opt = solver.solve(verbose);
   chrono::duration<double> wctduration = (chrono::system_clock::now() - wcts);
   cout << "Running time [seconds, Wall Clock]: " << fixed << setprecision(2) << wctduration.count() << endl;
 
