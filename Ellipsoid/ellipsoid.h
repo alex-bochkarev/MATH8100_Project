@@ -205,15 +205,15 @@ colvec EllipsoidSolver::solve(bool verbose)
       cout << "Ellipse:" << endl;
       cout << "center:" << endl;
       E.o.save(outp,csv_ascii);
-      cout << outp.str() << endl;
+      cout << outp.str();
       outp.str("");
       cout << "shape:" << endl;
       E.H.save(outp,csv_ascii);
       cout << outp.str();
+      outp.str("");
 
       if(accu(S)!=0) { cout << "infeasible" << endl; }else{ cout << "feasible" << endl;};
       cout << "VIOLATED CONSTRAINTS: " << accu(S) << endl;
-      outp.str("");
     };
 
     if(accu(S) == 0){ // no constraints are violated
@@ -250,6 +250,7 @@ colvec EllipsoidSolver::solve(bool verbose)
     if(verbose){
       wt.save(outp,csv_ascii);
       cout << "wt:" << endl << outp.str();
+      outp.str("");
     };
     E = updateEllipseKhachiyan(wt,E);
     step++;

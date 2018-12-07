@@ -125,8 +125,8 @@ int main(int argc, char **argv)
     return 1;
   };
 
-  cout << "A matrix is :\n" << A << endl;
-  cout << "rhs is: \n" << b << endl;
+  cout << "A matrix is:\n" << A << endl;
+  cout << "rhs is:\n" << b << endl;
   cout << "Costs vector is:\n" << c << endl;
 
   cout << "Epsilon is " << eps << endl;
