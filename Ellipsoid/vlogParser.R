@@ -91,3 +91,11 @@ for (i in 1:100){
 }
 
 abs(ell[,1])<=10 & abs(ell[,2]) <=10
+
+
+## Figure preparation for the Ellipsoid algorithm introduction
+
+dfp = data.frame(X = c(1,2,4,5),Y = c(1,2,2,1));
+
+ggplot(dfp)+
+  geom_polygon(aes(x=X,y=Y),fill="blue", )
