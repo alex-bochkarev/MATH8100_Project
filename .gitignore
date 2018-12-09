@@ -1,1 +1,3 @@
-logs/*.log
+Ellipsoid/logs/testcase*.log
+Ellipsoid/logs/randcase*.log
+Ellipsoid/logs/KMC_*.log
