@@ -14,9 +14,10 @@
 void showUsage(char *progname)
 {
   cout << "USAGE:" << endl;
-  cout << progname << " <filename> [--verbose]" << endl;
+  cout << progname << " <filename> [--verbose [--plain]]" << endl;
   cout << "Where *.data files are corresponding problem coefficients and <epsilon> is the required precision (number)" << endl;
   cout << "verbose option allows for more detailed logging" << endl;
+  cout << "plain option turns on plain ellipse update rule (default is Khachiyan1980 update)" << endl;
 }
 
 int main(int argc, char **argv)
@@ -28,9 +29,16 @@ int main(int argc, char **argv)
   };
 
   bool verbose = false;
-  if (argc==3) if(!strcmp(argv[2],"--verbose")){
+  int updMethod = UPD_KHACHIYAN;
+
+  if (argc>=3) if(!strcmp(argv[2],"--verbose")){
       verbose = true;
       cout << "Entering verbose mode..." << endl;
+      if(argc>3)
+        if(!strcmp(argv[3],"--plain")){
+          cout << "Switching to a plain update rule..." << endl;
+          updMethod = UPD_PLAIN;
+        };
     };
 
   ifstream file;
@@ -132,7 +140,7 @@ int main(int argc, char **argv)
   cout << "Epsilon is " << eps << endl;
   if(answerKnown) cout << "Known optimal solution:\n" << xStar << endl;
 
-  EllipsoidSolver solver(eps);
+  EllipsoidSolver solver(eps, updMethod);
 
   solver.setModel(c,A,b);
 

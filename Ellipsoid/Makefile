@@ -6,7 +6,7 @@ otgen = ./testgen
 ofile= ./testell
 GINC = $$(dirname $$(locate gurobi_c++.h))
 GFLAGS = -m64 -g
-CPPLIB = -L$$(dirname $$(locate libgurobi_c++)) -lgurobi_c++ -lgurobi81 -larmadillo -lblas -lboost_program_options
+CPPLIB = -L/opt/gurobi810/linux64/lib -lgurobi_c++ -lgurobi81 -larmadillo -lblas -lboost_program_options
 CPP = g++
 
 .PHONY: all, compile, tests, testgen, randcases, randtests
@@ -16,6 +16,8 @@ all: compile testgen tests
 compile: ${src}
 	${CPP} ${src} ${flags} -o ${ofile}
 
+compile-thin: ${src}
+	${CPP} ${src} ${flags} -DSET_THICKNESS=0 -o ${ofile}
 tests:
 	./run_tests.sh ${ofile}
 

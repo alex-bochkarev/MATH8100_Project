@@ -117,6 +117,7 @@ int main(int argc, char **argv){
   double al,bl,cl, eps;
   string fname;
   bool nonneg = false;
+  bool kmc = false;
   // Declare the supported options.
   po::options_description desc("Allowed options");
   desc.add_options()
@@ -130,6 +131,7 @@ int main(int argc, char **argv){
     (",c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
     ("filename,f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
     ("nonnegative", po::value<bool>(&nonneg)->default_value(nonneg), "add nonnegativity constraints (x>=0)")
+    ("kmc",po::value<bool>(&kmc)->default_value(false),"generate <N> Klee-Minty Cubes")
     ;
 
   po::variables_map vm;
@@ -170,6 +172,61 @@ int main(int argc, char **argv){
   arma_rng::set_seed_random(); // set the seed for RNG
 
   string fileName;
+
+  if(kmc){
+    for(int D=3;D<N+3;D++){
+      // generate a D-dimensional KMC
+      A = mat(2*D, D,fill::zeros);
+      b = colvec(2*D,fill::zeros);
+      c = colvec(D,fill::zeros);
+
+      double a=0;
+      for (int m=0;m<D; m++){
+        for (int i=0;i<D;i++){
+          if(i<m) A(m,i) = pow(2,(m+1)-i);
+          if(i==m) A(m,i) = 1;
+        }
+
+        b(m) = pow(5,m+1);
+        c(m) = -pow(2,D-(m+1));
+      }
+
+      // add nonnegativity constraints
+      colvec o(D, fill::zeros);
+      for(int j=0;j<D;j++){
+        o(j) = -1;
+        A.row(D+j) = trans(o);
+        o(j) = 0;
+        b(D+j) = 0;
+      };
+
+      fileName = fname+"KMC_"+to_string(D)+".data";
+      testcase.open(fileName);
+      if(!testcase.is_open()){
+        cerr << "Error opening the file: " << fileName << endl;
+        return 1;
+      };
+      testcase << "# Klee-Minty cube" << endl;
+      testcase << "# Dimensionality: " << D;
+      testcase << "; Generated: " << asctime(localtime ( &rawtime )) << endl;
+
+      testcase << ">epsilon -- precision parameter" << endl;
+      testcase << eps << endl;
+      testcase << ">A matrix data" << endl << A;
+      testcase << ">b (rhs) data" << endl << b;
+      testcase << ">c (costs vector) data" << endl << c;
+
+      x = colvec(D,fill::zeros);
+      x(D-1) = pow(5,D);
+      testcase << ">x -- known optimal solution" << endl << x;
+
+      testcase.close();
+    }
+
+
+    return 0;
+  }
+
   for(int i=0;i<N; i++){
     // generating a test case
     fileName = fname+to_string(n)+"x"+to_string(m)+"_"+to_string(i)+".data";

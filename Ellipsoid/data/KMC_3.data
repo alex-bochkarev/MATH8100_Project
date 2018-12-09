@@ -1,0 +1,27 @@
+# Klee-Minty cube
+# Dimensionality: 3; Generated: Sun Oct 17 02:28:00 499507548
+
+>epsilon -- precision parameter
+0.01
+>A matrix data
+   1.0000        0        0
+   4.0000   1.0000        0
+   8.0000   4.0000   1.0000
+  -1.0000        0        0
+        0  -1.0000        0
+        0        0  -1.0000
+>b (rhs) data
+   5.0000e+00
+   2.5000e+01
+   1.2500e+02
+            0
+            0
+            0
+>c (costs vector) data
+  -4.0000
+  -2.0000
+  -1.0000
+>x -- known optimal solution
+            0
+            0
+   1.2500e+02

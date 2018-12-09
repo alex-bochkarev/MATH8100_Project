@@ -16,11 +16,16 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 1000            // big-enough ball radius for the initial ellipsoid
+#define Rbig 1e20            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 1e3
 #define FEASIB_EPS 1e-100       // practical "error margin" for unboundedness and infeasibility test
 #define UNBOUND_EPS 0.0001
+#define MAX_STEP 50000
+
+#ifndef SET_THICKNESS
 #define SET_THICKNESS 1e-8 // a constant for non-full dimensional cases
+#endif
+
 // problem status flags
 #define IS_UNSOLVED    0
 #define IS_OPTIMAL     1
@@ -28,6 +33,9 @@ using namespace arma;
 #define IS_INFEASIBLE -1
 #define IS_FEASIBLE    3 // status for 'in progress'
 
+// update methods
+#define UPD_KHACHIYAN  0
+#define UPD_PLAIN      1
 /* *******************************************************************
   Basic structure for an ellipsoid representation
 */
@@ -83,10 +91,12 @@ class EllipsoidSolver: public LPSolver{
   double bestObjective;
   colvec bestPoint;
   double eps;
+  int updateMethod;
 public:
-  EllipsoidSolver(double precision) {
+  EllipsoidSolver(double precision, int updMethod = UPD_KHACHIYAN) {
     bestObjective = std::numeric_limits<double>::infinity(); // set the objective to +inf
     eps = precision;
+    updateMethod = updMethod;
   };
 colvec solve(bool verbose = false);
 bool isUnbounded(colvec &d); // checks if the problem is unbounded
@@ -98,7 +108,7 @@ Ellipse getFirstEllipse();
     Ellipse newE;
     newE.o = E.o - (1.0/(n+1))*E.H*wt / sqrt(dot(wt,E.H*wt)); // update the center
     newE.H = (pow(n,2)/(pow(n,2)-1))*(E.H - (2.0/(n+1.0))*(E.H*wt*trans(wt)*E.H)/dot(wt,E.H*wt)); // update the shape
-
+    newE.B = newE.H; // for stopping criterion to work correctly
     newE.vol = E.vol* (n/(n-1.0))*pow((pow(n,2)/(pow(n,2)-1)),(n-1.0)/2.0); // formula (2.11) of Bland et al. 1981
     return newE;
   };
@@ -115,19 +125,16 @@ Ellipse getFirstEllipse();
 
     newE.o = E.o - (1.0/(n+1.0))*E.B*eta / sqrt(dot(eta,eta));
     newE.B = (1 + 1.0/(16.0*n*n))*n/sqrt(n*n-1)*(E.B + (sqrt((n-1.0)/(n+1.0))-1)*E.B*etaHat / dot(eta,eta));
-    newE.H = trans(newE.B) * newE.B;
+    newE.H = newE.B * trans(newE.B);
     newE.vol = E.vol * exp(-1.0/(2.0*(n+1.0)));
     return newE;
   };
 
   ///
   inline bool stopCriterion(colvec &w, Ellipse &E){
-    if(fKnown){
-      cout << "optimality gap: " << bestObjective - fStar << endl;
-    }
     cout << "w=" << endl << w << endl << "H=" << endl << E.H << endl;
-    cout << "Criterion value: " << sqrt(dot(*c,E.B*(*c))) << "; while eps/ERR_F =" << eps/ERR_FACTOR << endl;
-    return(sqrt(dot(*c,E.B*(*c))) < eps/ERR_FACTOR); // see Dr. Boyd's notes (TODO: citation in the report)
+    cout << "Criterion value: " << sqrt(dot(*c,E.H*(*c))) << "; while eps/ERR_F =" << eps/ERR_FACTOR << endl;
+    return(sqrt(dot(*c,E.H*(*c))) < eps/ERR_FACTOR); // see Dr. Boyd's notes (TODO: citation in the report)
   };
 };
 
@@ -197,6 +204,10 @@ colvec EllipsoidSolver::solve(bool verbose)
   int step=0;
   stringstream outp;
 
+  double LB = -pow(Rbig,2);
+
+  status = IS_INFEASIBLE;
+
   do{
     S = checkFeasibility(E.o);
 
@@ -225,11 +236,11 @@ colvec EllipsoidSolver::solve(bool verbose)
         bestPoint = E.o;
         status = IS_FEASIBLE;
       }
-      if(stopCriterion(wt,E)){
-        timeToStop = true;
-        status = IS_OPTIMAL;
-        return bestPoint;
-      };
+      //      if(stopCriterion(wt,E)){
+      //  timeToStop = true;
+      //  status = IS_OPTIMAL;
+      // return bestPoint;
+      //};
 
    }else{
      // the new center is not in the feasible set
@@ -240,11 +251,11 @@ colvec EllipsoidSolver::solve(bool verbose)
          wt = trans(A->row(i));
          break;
        }
-       if (E.vol < FEASIB_EPS) {
-         if(verbose) cout << "E.vol=" << E.vol << " while FEASIB_EPS=" << FEASIB_EPS << endl;
-         timeToStop = true;
-         break;
-       }
+       //if (E.vol < FEASIB_EPS) { // was the volume constraint
+       //  if(verbose) cout << "E.vol=" << E.vol << " while FEASIB_EPS=" << FEASIB_EPS << endl;
+       //  timeToStop = true;
+       //  break;
+       //}
      }
     };
     if(verbose){
@@ -252,13 +263,34 @@ colvec EllipsoidSolver::solve(bool verbose)
       cout << "wt:" << endl << outp.str();
       outp.str("");
     };
-    E = updateEllipseKhachiyan(wt,E);
+    if(updateMethod == UPD_KHACHIYAN){
+      E = updateEllipseKhachiyan(wt,E);
+    }else{
+      E = updateEllipse(wt,E);
+    };
+
     step++;
-  }while(!timeToStop && !E.o.has_nan());
+
+
+    //  }while(!timeToStop && !E.o.has_nan() && step <= MAX_STEP);
+    LB = max(LB, dot((*c), E.o)-sqrt(dot((*c),E.H*(*c))));
+    if(abs(bestObjective - LB)*ERR_FACTOR <= eps){
+      if(verbose) cout << "stop criterion satisfied" << endl;
+      status = IS_OPTIMAL;
+      timeToStop = true;
+    }
+
+    if(verbose) {
+      cout << "CONV. SUMMARY: Step=" << step << "; criterion=" << bestObjective - LB << "; E.vol=" << E.vol;
+      if(fKnown) cout << "; df=" << bestObjective - fStar;
+      cout << endl;
+    };
+
+  }while(!timeToStop && !E.o.has_nan() && step <= MAX_STEP);
+
   if (status==IS_FEASIBLE){
     status = IS_OPTIMAL; // seems like we have seen an optimal solution
-  }else{
-    status = IS_INFEASIBLE;
   };
+
   return bestPoint;
 }
