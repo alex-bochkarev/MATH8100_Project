@@ -13,7 +13,7 @@ counter=1
 for file in $(ls ./data/testcase*.data); do
 		fname=./logs/$(basename $file .data).log
     echo $(date "+%Y-%m-%d %H:%M:%S") > $fname
-		$1 $file >> $fname;
+		$1 $file $2 >> $fname;
     casen=$(basename $file .data)
     fObj=$(cat $fname | sed -n '/^Optimal objective (found): /p' | sed -r 's/Optimal objective \(found\): (.+)/\1/')
     res=$(cat $fname | sed -n '/^SOLUTION CHECK:/p' | sed -r 's/SOLUTION CHECK: (.+)/\1/')
@@ -30,7 +30,7 @@ printf " +-----+----------------------+-----------+---------------+-------------
 for file in $(ls ./data/randcase*.data); do
 		fname=./logs/$(basename $file .data).log
     echo $(date "+%Y-%m-%d %H:%M:%S") > $fname
-		$1 $file --verbose >> $fname;
+		$1 $file $2 >> $fname;
     casen=$(basename $file .data)
     fObj=$(cat $fname | sed -n '/^Optimal objective (found): /p' | sed -r 's/Optimal objective \(found\): (.+)/\1/')
     res=$(cat $fname | sed -n '/^SOLUTION CHECK:/p' | sed -r 's/SOLUTION CHECK: (.+)/\1/')
