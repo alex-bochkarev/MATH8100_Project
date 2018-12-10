@@ -10,3 +10,8 @@ make compile
 # generate graphs
 
 # <INSERT R script here>
+
+# bash to summarize logs
+cat logs/tests.log | grep FAILED # failed cases
+cat logs/tests.log | grep +INF | wc -l #infeasible cases
+cat logs/tests.log | grep -ve"INF" | grep -e"| [0-9]" # not unfeasible or unbounded
