@@ -16,10 +16,10 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 1e20            // big-enough ball radius for the initial ellipsoid
+#define Rbig 1e5            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 1e3
 #define FEASIB_EPS 1e-100       // practical "error margin" for unboundedness and infeasibility test
-#define UNBOUND_EPS 0.0001
+#define UNBOUND_EPS 1e-200
 #define MAX_STEP 50000
 
 #ifndef SET_THICKNESS
@@ -92,11 +92,13 @@ class EllipsoidSolver: public LPSolver{
   colvec bestPoint;
   double eps;
   int updateMethod;
+  bool verboseMode;
 public:
   EllipsoidSolver(double precision, int updMethod = UPD_KHACHIYAN) {
     bestObjective = std::numeric_limits<double>::infinity(); // set the objective to +inf
     eps = precision;
     updateMethod = updMethod;
+    verboseMode = false;
   };
 colvec solve(bool verbose = false);
 bool isUnbounded(colvec &d); // checks if the problem is unbounded
@@ -164,6 +166,7 @@ bool EllipsoidSolver::isUnbounded(colvec &d)
       wt = *c;
     }else{
       v = (*A)*E.o;
+      if(verboseMode) cout << "v is " << v;
       //cout << "v is " << endl << v << endl;
       // objective improvement satisfied -- let's check for feasibility
       if(max(v) < UNBOUND_EPS){
@@ -193,6 +196,7 @@ colvec EllipsoidSolver::solve(bool verbose)
   Ellipse E = getFirstEllipse();
   colvec wt = colvec(n,fill::zeros);
 
+  verboseMode = verbose;
   if (isUnbounded(wt)){
     status = IS_UNBOUNDED;
     return wt;

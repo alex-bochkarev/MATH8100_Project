@@ -23,6 +23,9 @@ namespace po = boost::program_options;
 #define DEFAULT_C 10
 #define DEFAULT_B 100
 #define DEFAULT_FNAME "randcase"
+#define DEFAULT_n 10
+#define DEFAULT_N 1
+#define DEFAULT_m 5
 #define EPS_DET 0.1
 
 // problem status flags
@@ -175,17 +178,16 @@ int main(int argc, char **argv){
   po::options_description desc("Allowed options");
   desc.add_options()
     ("help", "show this help message")
-    (",n", po::value<int>(&n)->required(), "number of variables (integer)")
-    (",m", po::value<int>(&m)->required(), "number of constraints (integer)")
-    (",N", po::value<int>(&N)->required(), "number of test cases to generate")
+    (",n", po::value<int>(&n)->default_value(DEFAULT_n), "number of variables (integer)")
+    (",m", po::value<int>(&m)->default_value(DEFAULT_m), "number of constraints (integer)")
+    (",N", po::value<int>(&N)->default_value(DEFAULT_N), "number of test cases to generate")
     (",e", po::value<double>(&eps)->default_value(DEFAULT_PRECISION), "precision (epsilon) -- optional")
     (",a", po::value<double>(&al)->default_value(DEFAULT_A), "limits for a_ij values (-a..a will be generated)")
     (",b", po::value<double>(&bl)->default_value(DEFAULT_B), "limits for b_i values (-b..b will be generated)")
     (",c", po::value<double>(&cl)->default_value(DEFAULT_C), "limits for c_i values (-c..c will be generated)")
     ("filename,f", po::value<string>(&fname)->default_value(DEFAULT_FNAME), "filename prefix")
-    ("nonnegative", po::value<bool>(&nonneg)->default_value(nonneg), "add nonnegativity constraints (x>=0)")
-    ("kmc",po::value<bool>(&kmc)->default_value(false),"generate <N> Klee-Minty Cubes")
-    ("type,t",po::value<int>(&testcaseType)->default_value(0),"generate a specific type test case(s)")
+    ("nonnegative", po::bool_switch(&nonneg)->default_value(nonneg), "add nonnegativity constraints (x>=0)")
+    ("kmc",po::bool_switch(&kmc)->default_value(false),"generate <N> Klee-Minty Cubes")
     ;
 
   po::variables_map vm;
@@ -202,7 +204,6 @@ int main(int argc, char **argv){
   };
 
   ostringstream sheader;
-  time_t rawtime;
   double m0 = m;
   if(nonneg) m = m0 + n; // add n nonnegativity constraints
 
@@ -267,111 +268,12 @@ int main(int argc, char **argv){
     return 0;
   }
 
-  cout << vm.count("type") << " and case_type=" << testcaseType << endl;
-
-  if(vm.count("type") && testcaseType!=0){
-    // entering the "balanced test case" mode
-    cout << "Entering simplex-based case generator" << endl;
-
-    mat X(m,n-m,fill::zeros);
-    mat Xz = mat(m,n-m, fill::ones)*0.5;
-
-    mat B(m,m, fill::zeros);
-    mat Bz = mat(m,m,fill::ones)*0.5;
-
-    colvec beta(m,fill::zeros);
-    colvec cB(m, fill::zeros);
-
-    colvec cN(n-m, fill::zeros);
-    colvec rn(n-m);
-
-    colvec xB(m,fill::zeros);
-    colvec xN(n-m,fill::zeros);
-
-    switch(testcaseType){
-    case 1: // finite-optimal
-      if(m>n){
-        cerr << "Currently simplex-based case generator implemented only for m<=n!" << endl;
-        exit(1);
-      }
-      // implementation based on the simplex method
-      // generate X
-
-      cout << "Generating X matrix: ";
-      X.randu();
-      X = (X - Xz)*al;
-      cout << "done." << endl << "Generating B matrix";
-
-      // generate B
-      // we need it to be ``normally'' invertible (with not too small determinant)
-      while(abs(det(B))<=EPS_DET){
-        cout << ".";
-        B.randu();
-        B = (B - Bz)*al;
-      };
-
-      cout << "; det(B)=" << det(B) <<" --> done." << endl;
-      // generate beta
-      beta.randu();
-      beta = beta*bl;
-      cout << "beta is:" << beta;
-
-      // calculate b -- now it is determined
-      b = B*beta;
-
-      // calculate A -- now it is also determined
-      A = join_horiz(B, B*X);
-      // generate c_b
-      cB.randu();
-      cB = (cB - bz)*cl;
-
-      // generate c_N
-      rn.randu(); // generate nonnegative deltas
-      cN = trans(X)*cB + rn*cl;
-      cout << "cN is " << cN << endl;
-      // reconstruct C
-      c = join_vert(cB, cN);
-      cout << "Reduced costs row is:" << trans(c) - trans(cB)*inv(B)*A;
-
-      // reconstruct the solution
-      xB = beta;
-
-      x = join_vert(xB,xN);
-      cout << "so, optimal x is:" << x;
-
-      optObj = dot(c,x);
-      status = IS_OPTIMAL;
-
-      A = join_vert(A, eye<mat>(n,n)*(-1));
-      b = join_vert(b, colvec(n,fill::zeros));
-
-      sheader.str("");
-      sheader << "# Random test case with a finite optimum" << endl;
-      sheader << "# Produced by the simplex-based test-case generator" << endl;
-
-      fileName = fname+to_string(n)+"x"+to_string(m)+".data";
-      cout << "Saving the model..." << endl;
-      saveModel(fileName, sheader.str(), A, b, c, eps, status, x, optObj);
-      cout << "done" << endl;
-      break;
-    case 2: // infeasible
-      break;
-    case 3: // unbounded
-      break;
-    default:
-      cerr << "Error generating test case: " << testcaseType << " -- unknown case type!" << endl;
-      cerr << "Valid options are:" << endl;
-      cerr << "U -- unbounded" << endl << "I -- infeasible" << endl << "O -- with a finite optimum" << endl;
-      exit(1);
-    }
-
-    return 0;
-  }
 
   if(!(n>0 && m>0 && N>0)){
     cerr << "Wrong arguments -- n, m and N must be strictly positive" << endl;
     return 1;
   }
+
   for(int i=0;i<N; i++){
     // generating a test case
     fileName = fname+to_string(n)+"x"+to_string(m)+"_"+to_string(i)+".data";
@@ -379,7 +281,6 @@ int main(int argc, char **argv){
     sheader.str("");
     sheader << "# Randomly generated test case" << endl;
     sheader << "# Case number: " << i;
-    sheader << "; Generated: " << asctime(localtime ( &rawtime )) << endl;
     sheader << "# Parameters: n=" << n << ", m=" << m << ", a=" << al << ",b=" << bl << endl;
 
     // generate the numbers

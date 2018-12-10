@@ -28,14 +28,14 @@ testgen: ${tgen}
 randcases:
 	rm data/randcase*
 	${otgen} -n 10 -m 5 -N 50 --filename data/randcaseF > ${genlogs}
-	${otgen} -n 10 -m 5 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+	${otgen} -n 10 -m 5 -N 50 --nonnegative --filename data/randcaseNN >> ${genlogs}
 	${otgen} -n 10 -m 10 -N 50 --filename data/randcaseF >> ${genlogs}
-	${otgen} -n 10 -m 10 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+	${otgen} -n 10 -m 10 -N 50 --nonnegative --filename data/randcaseNN >> ${genlogs}
 	${otgen} -n 10 -m 15 -N 50 --filename data/randcaseF >> ${genlogs}
-	${otgen} -n 10 -m 15 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
+	${otgen} -n 10 -m 15 -N 50 --nonnegative --filename data/randcaseNN >> ${genlogs}
 
 KMCcases:
-	./bin/testgen -N 10 -n 1 -m 1 --kmc true --filename data/
+	./bin/testgen -N 10 --kmc --filename data/
 
 randtests:
 	./run_rtests.sh ${ofile}
