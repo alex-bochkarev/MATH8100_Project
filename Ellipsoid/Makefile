@@ -1,9 +1,9 @@
 flags = -g -O1 -larmadillo -lblas
 genlogs = logs/gen.log
-src = ./ell-test.cpp
-tgen = ./generate_tests.cpp
-otgen = ./testgen
-ofile= ./testell
+src = ./src/ell-test.cpp
+tgen = ./src/generate_tests.cpp
+otgen = ./bin/testgen
+ofile= ./bin/testell
 GINC = $$(dirname $$(locate gurobi_c++.h))
 GFLAGS = -m64 -g
 CPPLIB = -L/opt/gurobi810/linux64/lib -lgurobi_c++ -lgurobi81 -larmadillo -lblas -lboost_program_options
@@ -18,6 +18,7 @@ compile: ${src}
 
 compile-thin: ${src}
 	${CPP} ${src} ${flags} -DSET_THICKNESS=0 -o ${ofile}
+
 tests:
 	./run_tests.sh ${ofile}
 
@@ -33,8 +34,13 @@ randcases:
 	${otgen} -n 10 -m 15 -N 50 --filename data/randcaseF >> ${genlogs}
 	${otgen} -n 10 -m 15 -N 50 --nonnegative yes --filename data/randcaseNN >> ${genlogs}
 
+KMCcases:
+	./bin/testgen -N 10 -n 1 -m 1 --kmc true --filename data/
 
 randtests:
 	./run_rtests.sh ${ofile}
+
+KMCtests:
+	./run_kmc_tests.sh ${ofile}
 
 .ONESHELL:
