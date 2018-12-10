@@ -1,5 +1,5 @@
 # data file for a simple multi-dimensional case
-# Unbounded region, optimal solutions along a ray
+# Unbounded region, optimal solutions along a line segment 
 >epsilon (precision)
 0.01
 >A matrix data

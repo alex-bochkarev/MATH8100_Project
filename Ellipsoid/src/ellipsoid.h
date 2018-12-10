@@ -16,7 +16,7 @@ using namespace std;
 using namespace arma;
 
 // module-specific constants
-#define Rbig 1e5            // big-enough ball radius for the initial ellipsoid
+#define Rbig 1e10            // big-enough ball radius for the initial ellipsoid
 #define ERR_FACTOR 1e3
 #define FEASIB_EPS 1e-100       // practical "error margin" for unboundedness and infeasibility test
 #define UNBOUND_EPS 1e-200

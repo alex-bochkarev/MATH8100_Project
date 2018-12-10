@@ -1,5 +1,5 @@
 # data file for a simple multi-dimensional case
-# (source: MATH8100 HA8, problem 4)
+# 
 >epsilon (precision)
 0.01
 >A matrix data
