@@ -9,7 +9,7 @@ make compile
 
 # generate graphs
 
-# <INSERT R script here>
+# see vlogParser.R file
 
 # bash to summarize logs
 cat logs/tests.log | grep FAILED # failed cases

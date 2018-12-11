@@ -71,3 +71,30 @@ ggplot(data = states) +
   ggtitle("U.S. National Parks under consideration")
 
 ggsave("data/parks.png",width = 16, height = 10)
+
+######################################################################
+## draw the resulting map
+
+milestones = c("Clemson University", "Congaree", "Yellowstone", "Yosemite *")
+
+steps = c("Clemson University", "Congaree", "Gateway Arch", "Wind Cave", "Yellowstone", "Yosemite *");
+
+path = data.frame(From = steps[1:(length(steps)-1)], To = steps[2:length(steps)])
+path = merge(x=path, y=select(df, Name, Lon, Lat), by.x = "From", by.y = "Name")
+path = merge(x=path, y=select(df, Name, Lon, Lat), by.x = "To", by.y = "Name")
+
+ggplot(data = states) +
+  geom_polygon(aes(x = long, y = lat, fill = region, group = group), color = "white") + 
+  coord_fixed(1.3) +
+  guides(fill=FALSE)+  # do this to leave off the color legend
+  geom_segment(data=path, aes(x=Lon.x, y=Lat.x, xend=Lon.y, yend=Lat.y), arrow = arrow(length=unit(0.30,"cm")), color="blue", size=2)+
+  geom_point(data=df, aes(x=Lon,y=Lat))+
+  geom_label_repel(data=filter(df, !(Name %in% milestones)),aes(x=Lon,y=Lat, label=Name), alpha=0.7)+
+  geom_point(data=filter(df, Name %in% milestones), aes(x=Lon,y=Lat),color="blue", size=4)+
+  geom_label_repel(data=filter(df, Name %in% milestones),aes(x=Lon,y=Lat, label=Name), alpha=0.7, color="blue",size=8)+
+  xlab("Longitude")+
+  ylab("Latitude")+
+  labs(caption="MATH 8100 IE Team")+
+  ggtitle("National Parks Tour -- the solution: Clemson -> Congaree -> Gateway Arch -> Wind Cave -> Yellowstone -> Yosemite")
+
+ggsave("data/parks-sol.png",width = 16, height = 10)
