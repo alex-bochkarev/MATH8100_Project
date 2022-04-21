@@ -1,6 +1,7 @@
 # Course project: Ellipsoid method and National Parks problem.
-This repository contains most of my contributions to the Course project
-for "MATH8100 Mathematical Programming" course I took Clemson University in December 2018.
+This repository contains most of my contributions to the Course project for
+"MATH8100 Mathematical Programming" course I took at Clemson University in
+December 2018.
 
 Most of the material here is the main code and generated test-instances for the
 "Ellipsoid algorithm" part of the project. For the "National Parks" problem I
@@ -14,7 +15,8 @@ This is my implementation of the [Ellipsoid
 method](https://en.wikipedia.org/wiki/Ellipsoid_method) for Linear Programs
 (LPs). The idea is to search for an optimal solution in a sequence of shrinking
 ellipses (while at each step we are guaranteed that an optimum is within the
-ellipse). The convergence can be illustrated as follows:
+ellipse). The convergence can be illustrated as follows (assuming true optimum
+is the bottom right blue point):
 
 ![Ellipsoid algo illustration](./Ellipsoid/images/ell-steps.png)
 
